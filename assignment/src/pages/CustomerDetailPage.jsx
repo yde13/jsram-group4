@@ -1,19 +1,28 @@
 import React, {useContext, useState, useEffect} from 'react'
-import {CustomerContext} from '../contexts/CustomerContext';
-import CustomerItem from '../components/Customer/CustomerDetailItem';
+import {useHistory} from 'react-router-dom';
+import {CustomerContext} from '../contexts/CustomersContext';
+import CustomerDetailItem from '../components/Customer/CustomerDetailItem';
 
 export default function CustomerDetailPage(props) {
-    const {data} = useContext(CustomerContext);
-    const [customerData, setCustomerData] = useState(null);
-    console.log(data);
+    const {customerData} = useContext(CustomerContext);
+    const [customerDetailData, setCustomerDetailData] = useState(null);
 
     const id = props.match.params.id;
+    let history = useHistory();
+
+    console.log(customerData);
 
     useEffect(() => {
-        setCustomerData(data.customers[id])
+            if(customerData) {
+                const customerIndex = customerData.filter((customer) => customer.id == id)
+                setCustomerDetailData(customerIndex[0])
+            } else {
+                history.push('/customers');
+            }
+
     }, [])
 
     return (
-        customerData && <CustomerItem data={customerData} />
+        customerDetailData && <CustomerDetailItem data={customerDetailData} />
     )
 }

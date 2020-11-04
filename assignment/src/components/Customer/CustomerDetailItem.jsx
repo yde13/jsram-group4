@@ -1,15 +1,16 @@
 import React from 'react'
 
-export default function CustomerItem(props) {
+export default function CustomerDetailItem(props) {
+    const {name, organisationNr, vatNr, paymentTerm, website, email, phoneNumber} = props.data;
     return (
         <div>
-            <p>{props.data.name}</p>
-            <p>{props.data.organisationNr}</p>
-            <p>{props.data.vatNr}</p>
-            <p>{props.data.paymentTerm}</p>
-            <p>{props.data.website}</p>
-            <p>{props.data.email}</p>
-            <p>{props.data.phoneNumber}</p>
+            <p>Name: {name}</p>
+            <p>Organiastion number: {organisationNr}</p>
+            <p>Vat-number: {vatNr}</p>
+            <p>Payment Term: {paymentTerm}</p>
+            <p>Website: {website}</p>
+            <p>Email: {email}</p>
+            <p>Phone number: {phoneNumber}</p>
         </div>
     )
 }
