@@ -25,7 +25,6 @@ export default function SignupForm() {
     setSignupFormData({...signupFormData, [e.target.name]: e.target.value})
    
   }
-  console.log(signupFormData);
 
   return (
     <div className={styles.signupForm}>
