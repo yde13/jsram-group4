@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { UserContext } from './contexts/UserContext';
 import Home from './pages/Home';
 import Navbar from './components/Navbar/Navbar';
+import CustomersPage from './pages/CustomersPage';
 
 function App() {
   const [userData, setUserData] = useState(null)
@@ -18,8 +19,9 @@ function App() {
       
         <Switch>
 
-          <Route path='/login' component={LoginPage}></Route>
-          <Route path='/' component={Home}></Route>
+          <Route path='/login' exact component={LoginPage}></Route>
+          <Route path='/' exact component={Home}></Route>
+          <Route path='/customers' exact component={CustomersPage}></Route>
         </Switch>
       </UserContext.Provider>
 
