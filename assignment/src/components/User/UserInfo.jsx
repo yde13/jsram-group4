@@ -1,0 +1,32 @@
+import React, { useContext, useEffect } from 'react'
+import { UserContext } from '../../contexts/UserContext'
+
+export default function UserInfo() {
+  const {userData, setUserData} = useContext(UserContext)
+
+  function checkUserInfo(){
+    if(!userData) {
+      let test = JSON.parse(localStorage.getItem("userData"));
+      console.log(test);
+      setUserData(test)
+    }
+  }
+
+  useEffect(() => {
+    checkUserInfo()
+  }, [])
+
+  return (
+    <div>
+      {userData && (
+        <>
+        <span> Logged in as {userData.firstName} {userData.lastName}</span> 
+        <span>Email: {userData.email}</span>
+        </>
+      )}
+      {!userData && (
+        <p>Not logged in</p>
+      )}
+    </div>
+  )
+}
