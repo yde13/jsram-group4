@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import userKit from './data/UserKit';
+import UserKit from '../data/UserKit';
 
 export default function LoginPage() {
 	const [emailInput, setEmailInput] = useState('webb19@willandskill.se');
@@ -18,6 +18,7 @@ export default function LoginPage() {
 			.login(email, password)
 			.then(res => res.json())
 			.then(data => {
+				console.log(data.token)
 				setToken(data.token);
 				userKit.setToken(data.token);
 			});
