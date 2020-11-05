@@ -2,6 +2,7 @@ import React from 'react'
 import UserInfo from '../User/UserInfo'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import LogOut from '../Login/LogOut'
 
 export default function Navbar() {
 
@@ -39,7 +40,7 @@ export default function Navbar() {
       </StyledNavItems>
       <StyledUserInfo>
           <UserInfo/>
-          
+          <LogOut />
         </StyledUserInfo>
     </StyledNav>
   )

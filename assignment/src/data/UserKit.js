@@ -75,4 +75,11 @@ export default class {
         
         localStorage.setItem("userData", JSON.stringify(userData))
     }
+
+    logOutUser() {
+        localStorage.removeItem("JWT_APP")
+        localStorage.removeItem("userData")
+    }
+
+
 }

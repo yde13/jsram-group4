@@ -22,15 +22,14 @@ function App() {
         <UserContext.Provider value={{ userData, setUserData }}>
           <Navbar />
 
-        <Switch>
-          <Route path='/' exact component={Home}></Route>
-          <Route path='/login' exact component={LoginPage}></Route>
-          <Route path='/signup' exact component={SignupPage}></Route>
-          <Route path='/customers/:id' exact component={CustomerDetailPage}></Route>
-          <Route path='/customers' exact component={CustomersPage}></Route>
-        </Switch>
-        
-      </UserContext.Provider>
+          <Switch>
+            <Route path='/' exact component={Home}></Route>
+            <Route path='/login' exact component={LoginPage}></Route>
+            <Route path='/signup' exact component={SignupPage}></Route>
+            <Route exact path='/customers/:id' component={CustomerDetailPage}></Route>
+            <Route exact path='/customers' component={CustomersPage}></Route>
+          </Switch>
+        </UserContext.Provider>
       </CustomerContext.Provider>
 
 
