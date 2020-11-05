@@ -43,7 +43,7 @@ export default class {
     activateAccount(uid, token) {
         const payload = {
             uid, token
-        }
+        };
         return fetch(ACTIVATE_USER_URL, {
             method: 'POST',
             body: JSON.stringify(payload),

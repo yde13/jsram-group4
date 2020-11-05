@@ -24,7 +24,7 @@ export default function CustomersPage() {
         customerKit.fetchAll()
             .then(res => res.json())
             .then(customers => {
-                setCustomerData(customers.results)
+                setCustomerData(customers)
             })
     }
 

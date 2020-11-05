@@ -4,8 +4,10 @@ import {CustomerContext} from '../contexts/CustomersContext';
 import CustomerDetailItem from '../components/Customer/CustomerDetailItem';
 
 export default function CustomerDetailPage(props) {
+    
     const {customerData} = useContext(CustomerContext);
     const [customerDetailData, setCustomerDetailData] = useState(null);
+    
 
     const id = props.match.params.id;
     let history = useHistory();
@@ -13,8 +15,8 @@ export default function CustomerDetailPage(props) {
     console.log(customerData);
 
     useEffect(() => {
-            if(customerData) {
-                const customerIndex = customerData.filter((customer) => customer.id == id)
+            if(customerData.results) {
+                const customerIndex = customerData.results.filter((customer) => customer.id == id)
                 setCustomerDetailData(customerIndex[0])
             } else {
                 history.push('/customers');
@@ -23,6 +25,7 @@ export default function CustomerDetailPage(props) {
     }, [])
 
     return (
+  
         customerDetailData && <CustomerDetailItem data={customerDetailData} />
     )
 }
