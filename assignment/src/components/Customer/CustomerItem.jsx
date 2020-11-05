@@ -50,7 +50,7 @@ export default function CustomerItem(props) {
       <p>Phone number: {props.data[1].phoneNumber}</p>
       <button onClick={handleDeleteCustomer}>Delete</button>
       <button onClick={test}>Test</button>
-      {/* <Link link="/customers"><p>More Info</p></Link> */}
+      <Link to={`customers/${props.data[1].id}`}><p>More Info</p></Link>
     </div>
   )
 }

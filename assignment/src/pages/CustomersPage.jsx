@@ -67,6 +67,7 @@ export default function CustomersPage() {
             <h1>Customers page</h1>
 
 
+
             <CustomerForm
                 onChange={handleInputOnChange}
                 setNameInput={formData["name"]}

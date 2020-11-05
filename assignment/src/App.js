@@ -7,6 +7,7 @@ import { CustomerContext } from './contexts/CustomersContext'
 import Home from './pages/Home';
 import Navbar from './components/Navbar/Navbar';
 import CustomersPage from './pages/CustomersPage';
+import CustomerDetailPage from './pages/CustomerDetailPage';
 import SignupPage from './pages/SignupPage';
 
 function App() {
@@ -20,13 +21,16 @@ function App() {
       <CustomerContext.Provider value={{ customerData, setCustomerData }}>
         <UserContext.Provider value={{ userData, setUserData }}>
           <Navbar />
-          <Switch>
-            <Route path='/signup' exact component={SignupPage}></Route>
-            <Route path='/login' exact component={LoginPage}></Route>
-            <Route path='/customers' exact component={CustomersPage}></Route>
-            <Route path='/' exact component={Home}></Route>
-          </Switch>
-        </UserContext.Provider>
+
+        <Switch>
+          <Route path='/' exact component={Home}></Route>
+          <Route path='/login' exact component={LoginPage}></Route>
+          <Route path='/signup' exact component={SignupPage}></Route>
+          <Route path='/customers/:id' exact component={CustomerDetailPage}></Route>
+          <Route path='/customers' exact component={CustomersPage}></Route>
+        </Switch>
+        
+      </UserContext.Provider>
       </CustomerContext.Provider>
 
 
