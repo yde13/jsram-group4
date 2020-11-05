@@ -62,9 +62,12 @@ export default function CustomersPage() {
         fetchAllCustomers()
     }, [])
 
+    console.log(customerData);
+    console.log(formData);
     return (
         <div>
             <h1>Customers page</h1>
+
 
 
             <CustomerForm
