@@ -34,7 +34,8 @@ export default function Navbar() {
       <StyledNavItems>
         <Link to='/'>Home</Link>
         <Link to='/login'>Login</Link>
-
+        <Link to='/signup'>Signup</Link>
+        <Link to='/customers'>Customers</Link>
       </StyledNavItems>
       <StyledUserInfo>
           <UserInfo/>

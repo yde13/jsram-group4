@@ -7,28 +7,30 @@ import { CustomerContext } from './contexts/CustomersContext'
 import Home from './pages/Home';
 import Navbar from './components/Navbar/Navbar';
 import CustomersPage from './pages/CustomersPage';
+import SignupPage from './pages/SignupPage';
 
 function App() {
   const [userData, setUserData] = useState(null)
   const [customerData, setCustomerData] = useState(null)
 
 
-
   return (
     <div>
+
       <CustomerContext.Provider value={{ customerData, setCustomerData }}>
         <UserContext.Provider value={{ userData, setUserData }}>
           <Navbar />
-
-
           <Switch>
-
+            <Route path='/signup' exact component={SignupPage}></Route>
             <Route path='/login' exact component={LoginPage}></Route>
-            <Route path='/' exact component={Home}></Route>
             <Route path='/customers' exact component={CustomersPage}></Route>
+            <Route path='/' exact component={Home}></Route>
           </Switch>
         </UserContext.Provider>
       </CustomerContext.Provider>
+
+
+
     </div>
   );
 }
