@@ -76,7 +76,7 @@ export default function CustomersPage() {
             />
             {customerData && Object.entries(customerData.results).map((customer, index) => {
 
-                return <CustomerItem key={index} data={customer} />
+                return <CustomerItem key={index} data={customer} value={customer[1].id} />
 
             })}
         </div>
