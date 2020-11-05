@@ -1,14 +1,18 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from "react-router-dom";
 import LoginInput from '../components/Login/LoginInput';
+import ActivateAccount from '../components/Signup/ActivateAccount';
 import { UserContext } from '../contexts/UserContext';
 import UserKit from '../data/UserKit';
 
-export default function LoginPage() {
+export default function LoginPage(props) {
 	const [emailInput, setEmailInput] = useState('webb19@willandskill.se');
 	const [passwordInput, setPasswordInput] = useState('javascriptoramverk');
 	const [loginStatus, setLoginStatus] = useState('')
 	const [token, setToken] = useState(null);
+	const [URLdata, setURLdata] = useState(null)
+
+
 
 	let history = useHistory()
 	const {setUserData} = useContext(UserContext)
@@ -31,7 +35,6 @@ export default function LoginPage() {
 					userKit.getMe()
 					.then(res => res.json())
 					.then(data =>  {
-						console.log(data);
 						setUserData(data)
 						userKit.setUserInfo(data)
 					})
@@ -40,16 +43,35 @@ export default function LoginPage() {
 			})
 	};
 
+	function checkURLParams() {
+		if(props.location.search) {
+			const URL = props.location.search
+			setURLdata(new URLSearchParams(URL))
+		}
+	}
+
+	useEffect(() => {
+		checkURLParams()
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	},[])
+
 	return (
 		<div>
-			<LoginInput 
-				emailInput={emailInput}
-				passwordInput={passwordInput}
-				setEmailInput={setEmailInput}
-				setPasswordInput={setPasswordInput}
-			/>
+			{!URLdata && (
+				<>
+				<LoginInput 
+					emailInput={emailInput}
+					passwordInput={passwordInput}
+					setEmailInput={setEmailInput}
+					setPasswordInput={setPasswordInput}
+				/>
+					<button onClick={handleOnClick}>Login</button>
+				</>
+			)}
+			{URLdata && (
+				<ActivateAccount URLdata={URLdata}/>
+			)}
 			{loginStatus && loginStatus}
-			<button onClick={handleOnClick}>Login</button>
 		</div>
 	);
 }
