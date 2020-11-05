@@ -39,6 +39,7 @@ export default function Navbar() {
       </StyledNavItems>
       <StyledUserInfo>
           <UserInfo/>
+          
         </StyledUserInfo>
     </StyledNav>
   )
