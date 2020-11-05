@@ -28,8 +28,8 @@ export default function CustomersPage() {
             })
     }
 
-    function handleCreateCustomer(e) {
-        e.preventDefault()
+    function handleCreateCustomer() {
+        // e.preventDefault() //kasnke behöver tas bort för att få kundlistan att uppdateras när man submittar
 
         const token = localStorage.getItem("JWT_APP");
         const payload = formData;
@@ -44,7 +44,12 @@ export default function CustomersPage() {
         })
             .then(res => res.json())
             .then(data => {
-                console.log("RES: ", data);
+                let customerDataCopy = {...customerData}
+                // customerDataCopy.results = [...customerDataCopy.results, data]
+                customerDataCopy.results.unshift(data); //som att använda push in i result-arrayen men att den pushar in skiten i början istället för i slutet
+                console.log("Copy: ", customerDataCopy)
+                setCustomerData(customerDataCopy);
+                console.log("CustomerData: ", customerData && customerData)
             })
     }
 
