@@ -4,6 +4,7 @@ import { CustomerContext } from '../contexts/CustomersContext'
 import CustomerKit from '../data/CustomerKit';
 import CustomerItem from '../components/Customer/CustomerItem';
 import styled from 'styled-components'
+import { StyledList } from '../theme/testStyles';
 
 
 export default function CustomersPage() {
@@ -52,16 +53,6 @@ export default function CustomersPage() {
     useEffect(() => {
         fetchAllCustomers()
     }, [])
-
-    const StyledList = styled.div`
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    grid-gap: 10px;
-    color: white;
-    padding: 10px;
-    font-size: 1.3rem;
-  `
 
     return (
         <div>
