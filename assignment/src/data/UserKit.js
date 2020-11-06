@@ -12,13 +12,8 @@ export default class {
         const payload = {
         email, password
         }
-        return fetch(LOGIN_URL, {
-        method: "POST",
-        body: JSON.stringify(payload),
-        headers: {
-                "Content-Type": "application/json",
-            }
-        })
+        
+        return this.ourPostFetch(payload, LOGIN_URL)
     }
 
     signup(signupData){
@@ -31,36 +26,25 @@ export default class {
             organisationKind: signupData.organisationKind
         }
 
-        return fetch(USER_URL, {
-            method: 'POST',
-            body: JSON.stringify(payload),
-            headers: {
-                "content-type" : "application/json"
-            }
-        })
+        return this.ourPostFetch(payload, USER_URL)
     }
 
     activateAccount(uid, token) {
         const payload = {
             uid, token
         };
-        return fetch(ACTIVATE_USER_URL, {
-            method: 'POST',
-            body: JSON.stringify(payload),
-            headers: {
-                "content-type" : "application/json"
-            }
-        })
+        
+        return this.ourPostFetch(payload, ACTIVATE_USER_URL)
     }
 
     getMe() {
         const url = `${API_URL}me`
         return fetch(url, {
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${this.getToken()}`
-        }
-        })
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${this.getToken()}`
+                }
+            })
     }
 
     setToken(token) {
@@ -72,7 +56,6 @@ export default class {
     }
 
     setUserInfo(userData) {
-        
         localStorage.setItem("userData", JSON.stringify(userData))
     }
 
@@ -81,5 +64,15 @@ export default class {
         localStorage.removeItem("userData")
     }
 
+    ourPostFetch(payload, url){
+        return fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(payload),
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${this.getToken()}`
+            }
+        })
+    }
 
 }

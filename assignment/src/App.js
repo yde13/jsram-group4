@@ -9,11 +9,13 @@ import Navbar from './components/Navbar/Navbar';
 import CustomersPage from './pages/CustomersPage';
 import CustomerDetailPage from './pages/CustomerDetailPage';
 import SignupPage from './pages/SignupPage';
+import UserKit from './data/UserKit'
+import Redirect from './components/Login/Redirect';
 
 function App() {
   const [userData, setUserData] = useState(null)
   const [customerData, setCustomerData] = useState(null)
-
+  const userKit = new UserKit()
 
   return (
     <div>
@@ -26,8 +28,16 @@ function App() {
             <Route path='/' exact component={Home}></Route>
             <Route path='/login' exact component={LoginPage}></Route>
             <Route path='/signup' exact component={SignupPage}></Route>
-            <Route exact path='/customers/:id' component={CustomerDetailPage}></Route>
-            <Route exact path='/customers' component={CustomersPage}></Route>
+            {typeof(userKit.getToken()) === 'string' ? 
+            <Route exact path='/customers/:id' component={CustomerDetailPage}></Route> : 
+            <Route exact path='/customers/:id' component={Redirect}></Route>
+            }
+            {typeof(userKit.getToken()) === 'string' ?
+             <Route exact path='/customers' component={CustomersPage}></Route> : 
+             <Route exact path='/customers' component={Redirect}></Route>
+             }
+            
+            
           </Switch>
         </UserContext.Provider>
       </CustomerContext.Provider>
