@@ -11,6 +11,7 @@ import CustomerDetailPage from './pages/CustomerDetailPage';
 import SignupPage from './pages/SignupPage';
 import UserKit from './data/UserKit'
 import Redirect from './components/Login/Redirect';
+import GuardedRoute from './components/Login/GuradedRoute';
 
 function App() {
   const [userData, setUserData] = useState(null)
@@ -28,15 +29,8 @@ function App() {
             <Route path='/' exact component={Home}></Route>
             <Route path='/login' exact component={LoginPage}></Route>
             <Route path='/signup' exact component={SignupPage}></Route>
-            { userKit.decodeToken() === true ? 
-            <Route exact path='/customers/:id' component={CustomerDetailPage}></Route> : 
-            <Route exact path='/customers/:id' component={Redirect}></Route>
-            }
-            { userKit.decodeToken() === true ?
-             <Route exact path='/customers' component={CustomersPage}></Route> : 
-             <Route exact path='/customers' component={Redirect}></Route>
-             }
-            
+            <GuardedRoute exact path='/customers/:id' component={CustomerDetailPage} auth={userKit.decodeToken()} />
+            <GuardedRoute exact path='/customers' component={CustomersPage} auth={userKit.decodeToken()} />
             
           </Switch>
         </UserContext.Provider>
