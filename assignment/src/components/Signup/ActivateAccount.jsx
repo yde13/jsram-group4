@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import UserKit from '../../data/UserKit'
+import { StyledPrimaryButton } from '../../theme/testStyles'
 
 export default function ActivateAccount(props) {
   const UID = props.URLdata.get('uid')
@@ -31,7 +32,7 @@ export default function ActivateAccount(props) {
             value={TOKEN}
             onChange={e => setTokenData(e.target.value)}
           />
-          <button onClick={handleOnClickActivateAccount}>Activate account</button>
+          <StyledPrimaryButton onClick={handleOnClickActivateAccount}>Activate account</StyledPrimaryButton>
           {accountedCreated && (
             <p>Account created! woh</p>
           )}

@@ -3,8 +3,7 @@ import CustomerForm from '../components/Customer/CustomerForm';
 import { CustomerContext } from '../contexts/CustomersContext'
 import CustomerKit from '../data/CustomerKit';
 import CustomerItem from '../components/Customer/CustomerItem';
-import styled from 'styled-components'
-import { StyledList } from '../theme/testStyles';
+import { StyledList, StyledMainContentContainer } from '../theme/testStyles';
 
 
 export default function CustomersPage() {
@@ -55,7 +54,7 @@ export default function CustomersPage() {
     }, [])
 
     return (
-        <div>
+        <StyledMainContentContainer>
             <h1>Customers page</h1>
 
             <CustomerForm
@@ -81,7 +80,7 @@ export default function CustomersPage() {
                 })}
             </StyledList>
 
-        </div>
+        </StyledMainContentContainer>
 
     )
 }

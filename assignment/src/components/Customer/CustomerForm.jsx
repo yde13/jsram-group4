@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyledForm } from '../../theme/testStyles'
+import { StyledPrimaryButton } from '../../theme/testStyles'
 
 export default function CustomerForm(props) {
     return (
@@ -88,7 +89,7 @@ export default function CustomerForm(props) {
                                 />
                             </li>
                             <li>
-                                <button onClick={props.handleCreateCustomer}>Create</button>
+                                <StyledPrimaryButton onClick={props.handleCreateCustomer}>Create</StyledPrimaryButton>
                             </li>
                         </ul>
                     </form>
