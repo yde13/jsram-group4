@@ -46,5 +46,11 @@ export const StyledUserInfo = styled.div`
 `
 
 export const StyledForm = styled.div`
-  
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  color: white;
+  margin: 10px;
+  padding: 10px;
+  font-size: 1.3rem;
 `
