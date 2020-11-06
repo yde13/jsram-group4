@@ -23,6 +23,7 @@ export default function CustomerDetailPage(props) {
     }
 
     function handleOnClickEditCustomer () {
+        checkCustomerData(); 
         setEditUser(!editUser)
     }
 

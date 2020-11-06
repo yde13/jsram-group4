@@ -1,8 +1,10 @@
-import React from 'react'
+import React, {useContext, useEffect, useState} from 'react'
+import {CustomerContext} from '../../contexts/CustomersContext';
 
 export default function CustomerDetailItem(props) {
 
     const {name, organisationNr, vatNr, paymentTerm, website, email, phoneNumber} = props.data;
+
     return (
         <div>
             <p>Name: {name}</p>
