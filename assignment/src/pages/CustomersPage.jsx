@@ -31,24 +31,13 @@ export default function CustomersPage() {
     }
 
     function handleCreateCustomer() {
-        // e.preventDefault() //kasnke behöver tas bort för att få kundlistan att uppdateras när man submittar
-
-        const token = localStorage.getItem("JWT_APP");
         const payload = formData;
-        console.log("PAYLOADEN: ", payload);
-        fetch(url, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify(payload)
-        })
+        const customerkit = new CustomerKit;
+        customerkit.createCustomer(payload)
             .then(res => res.json())
             .then(data => {
                 let customerDataCopy = { ...customerData }
-                // customerDataCopy.results = [...customerDataCopy.results, data]
-                customerDataCopy.results.unshift(data); //som att använda push in i result-arrayen men att den pushar in skiten i början istället för i slutet
+                customerDataCopy.results.unshift(data);
                 console.log("Copy: ", customerDataCopy)
                 setCustomerData(customerDataCopy);
                 console.log("CustomerData: ", customerData && customerData)
@@ -77,8 +66,6 @@ export default function CustomersPage() {
     return (
         <div>
             <h1>Customers page</h1>
-
-
 
             <CustomerForm
                 onChange={handleInputOnChange}

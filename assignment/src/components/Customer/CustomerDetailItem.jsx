@@ -1,5 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react'
-import {CustomerContext} from '../../contexts/CustomersContext';
+import React from 'react'
 
 export default function CustomerDetailItem(props) {
 

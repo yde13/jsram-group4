@@ -19,6 +19,11 @@ export default class {
     return this.ourEditFetch(url, payload)
   }
 
+  createCustomer(payload) {
+    const url = Customer_URL;
+    return this.ourPostFetch(payload, url)
+  }
+
   getToken() {
     return localStorage.getItem("JWT_APP")
   }
@@ -50,6 +55,17 @@ export default class {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${this.getToken()}`
       }
+    })
+  }
+
+  ourPostFetch(payload, url){
+    return fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(payload),
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${this.getToken()}`
+        }
     })
   }
 }
