@@ -19,8 +19,8 @@ export default function UserInfo() {
     <div>
       {userData && (
         <>
-        <span> Logged in as {userData.firstName} {userData.lastName}</span> 
-        <span>Email: {userData.email}</span>
+        <p>Logged in as {userData.firstName} {userData.lastName}</p> 
+        <p>Email: {userData.email}</p>
         </>
       )}
       {!userData && (

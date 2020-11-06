@@ -19,7 +19,7 @@ export default function LogOut() {
 
   useEffect(() => {
     
-    if(typeof(userKit.getToken() === 'string')) {
+    if(userKit.decodeToken()) {
       setLoggedIn(true)
     }
   }, [])
