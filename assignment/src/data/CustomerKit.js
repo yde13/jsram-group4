@@ -6,8 +6,30 @@ const Customer_URL = `${ROOT_URL}api/v1/customers`
 export default class {
 
   fetchAll() {
-    return fetch(Customer_URL, {
-      method: 'GET',
+    return this.ourGetFetch(Customer_URL)
+  }
+
+  deleteOneCustomer(id) {
+    const url = `${Customer_URL}/${id}/`
+    return this.ourDeleteFetch(url)
+  }
+
+  editCustomerInfo(id, payload) {
+    const url = `${Customer_URL}/${id}/`
+    return this.ourEditFetch(url, payload)
+  }
+
+  createCustomer(payload) {
+    const url = Customer_URL;
+    return this.ourPostFetch(payload, url)
+  }
+
+  getToken() {
+    return localStorage.getItem("JWT_APP")
+  }
+
+  ourGetFetch(url) {
+    return fetch(url, {
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${this.getToken()}`
@@ -15,8 +37,8 @@ export default class {
     })
   }
 
-  deleteOneCustomer(id) {
-    fetch(`${Customer_URL}/${id}/`, {
+  ourDeleteFetch(url) {
+    return fetch(url, {
       method: 'DELETE',
       headers: {
         "Authorization": `Bearer ${this.getToken()}`,
@@ -25,18 +47,25 @@ export default class {
     })
   }
 
-  getToken() {
-    return localStorage.getItem("JWT_APP")
-  }
-
-  editCustomerInfo(id, payload) {
-    return fetch(`${Customer_URL}/${id}/`, {
+  ourEditFetch(url, payload) {
+    return fetch(url, {
       method: 'PUT',
       body: JSON.stringify(payload),
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${this.getToken()}`
       }
+    })
+  }
+
+  ourPostFetch(payload, url){
+    return fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(payload),
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${this.getToken()}`
+        }
     })
   }
 }
