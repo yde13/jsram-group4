@@ -16,7 +16,7 @@ function App() {
   const [userData, setUserData] = useState(null)
   const [customerData, setCustomerData] = useState(null)
   const userKit = new UserKit()
-
+ 
   return (
     <div>
 
@@ -28,11 +28,11 @@ function App() {
             <Route path='/' exact component={Home}></Route>
             <Route path='/login' exact component={LoginPage}></Route>
             <Route path='/signup' exact component={SignupPage}></Route>
-            {typeof(userKit.getToken()) === 'string' ? 
+            { userKit.decodeToken() === true ? 
             <Route exact path='/customers/:id' component={CustomerDetailPage}></Route> : 
             <Route exact path='/customers/:id' component={Redirect}></Route>
             }
-            {typeof(userKit.getToken()) === 'string' ?
+            { userKit.decodeToken() === true ?
              <Route exact path='/customers' component={CustomersPage}></Route> : 
              <Route exact path='/customers' component={Redirect}></Route>
              }
