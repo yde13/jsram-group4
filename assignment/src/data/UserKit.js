@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken')
 const ROOT_URL = "https://frebi.willandskill.eu/"
 const API_URL = `${ROOT_URL}api/v1/`
 const AUTH_URL = `${ROOT_URL}auth/`
@@ -62,6 +63,21 @@ export default class {
     logOutUser() {
         localStorage.removeItem("JWT_APP")
         localStorage.removeItem("userData")
+    }
+
+    decodeToken() {
+        let decoded = jwt.decode(this.getToken());
+        
+        if(decoded !== null) {
+            if (Date.now() >= decoded.exp * 1000) {
+                return false;
+              } else {
+                return true
+              }
+        } else {
+            return false
+        }
+       
     }
 
     ourPostFetch(payload, url){
