@@ -1,12 +1,13 @@
 export const Theme = {
     colors: {
-        black: '#000',
+        navbarColor: '#081c15',
+        mainDarkColor: '#1b4332',
+        secondaryDarkColor: '#2d6a4f',
         white: '#fffff',
-
 
     },
     fonts: {
-        text: 'sans-serif',
-        headers: 'Montserrat'
+        text: 'Poppins',
+        headers: 'Montserrat', 
     }
 }

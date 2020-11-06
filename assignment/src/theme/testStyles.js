@@ -13,7 +13,7 @@ export const StyledList = styled.div`
 export const StyledItem  = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: black;
+  background-color: ${({theme})=>theme.colors.secondaryDarkColor};
   color: white;
   margin: 10px;
   padding: 10px;
@@ -23,7 +23,7 @@ export const StyledItem  = styled.div`
 export const StyledNav  = styled.div`
   width: 100%;
   display: flex;
-  background-color: ${({theme})=>theme.colors.black};
+  background-color: ${({theme})=>theme.colors.navbarColor};
   color: white;
   padding: 10px;
   font-size: 1.3rem;
@@ -43,4 +43,8 @@ export const StyledUserInfo = styled.div`
   display: flex;
   justify-content: flex-end;
   font-size: 1rem;
+`
+
+export const StyledForm = styled.div`
+  
 `
