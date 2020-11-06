@@ -9,7 +9,8 @@ export default function Navbar() {
   const StyledNav  = styled.div`
     width: 100%;
     display: flex;
-    background-color: black;
+    /*background-color: #103643; */
+    background-color: ${({theme})=>theme.colors.black};
     color: white;
     margin: 10px;
     padding: 10px;
@@ -21,6 +22,7 @@ export default function Navbar() {
     justify-content: space-around;
     padding: 20px;
     margin: 20px;
+    color: #96DEF6;
   `
 
   const StyledUserInfo = styled.div`

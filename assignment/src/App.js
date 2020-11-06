@@ -11,6 +11,8 @@ import CustomerDetailPage from './pages/CustomerDetailPage';
 import SignupPage from './pages/SignupPage';
 import UserKit from './data/UserKit'
 import Redirect from './components/Login/Redirect';
+import styled from 'styled-components';
+import GlobalStyle from './theme/globalStyles';
 
 function App() {
   const [userData, setUserData] = useState(null)
@@ -19,7 +21,7 @@ function App() {
  
   return (
     <div>
-
+      <GlobalStyle />
       <CustomerContext.Provider value={{ customerData, setCustomerData }}>
         <UserContext.Provider value={{ userData, setUserData }}>
           <Navbar />
