@@ -10,7 +10,7 @@ export default function LoginInput(props) {
 				placeholder='Email'
 			/>
 			<input
-				type='text'
+				type='password'
 				value={props.passwordInput}
 				onChange={e => props.setPasswordInput(e.target.value)}
 				placeholder='Password'
