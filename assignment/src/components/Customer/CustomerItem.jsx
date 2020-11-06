@@ -22,35 +22,13 @@ export default function CustomerItem(props) {
     setCustomerData(customerDataCopy)
   }
 
-
-  function test() {
-    let customerDataCopy = { ...customerData }
-
-    customerDataCopy.results.map((item, index) => {
-      if (item.id === id) {
-        console.log('Rätt id', item);
-        customerDataCopy.results.splice(index, 1)
-
-
-      } else {
-        console.log('fel id');
-
-      }
-    })
-    console.log(customerDataCopy.results);
-
-  }
-
-
-
   return (
     <div>
       <p>Name: {props.data[1].name}</p>
       <p>Email: {props.data[1].email}</p>
       <p>Phone number: {props.data[1].phoneNumber}</p>
-      <button onClick={handleDeleteCustomer}>Delete</button>
-      <button onClick={test}>Test</button>
       <Link to={`customers/${props.data[1].id}`}><p>More Info</p></Link>
+      <button onClick={handleDeleteCustomer}>Delete</button>
     </div>
   )
 }
