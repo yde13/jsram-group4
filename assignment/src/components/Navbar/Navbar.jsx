@@ -15,9 +15,9 @@ export default function Navbar() {
         <Link to='/customers'>Customers</Link>
       </StyledNavItems>
       <StyledUserInfo>
-          <UserInfo/>
-          <LogOut />
-        </StyledUserInfo>
+        <UserInfo/>
+        <LogOut />
+      </StyledUserInfo>
     </StyledNav>
   )
 }

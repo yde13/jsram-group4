@@ -7,7 +7,6 @@ export default function UserInfo() {
   function checkUserInfo(){
     if(!userData) {
       let test = JSON.parse(localStorage.getItem("userData"));
-      console.log(test);
       setUserData(test)
     }
   }

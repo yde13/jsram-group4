@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../../contexts/UserContext'
 import UserKit from '../../data/UserKit'
 import { useHistory } from "react-router-dom";
+import { StyledPrimaryButton } from '../../theme/testStyles';
 
 export default function LogOut() {
   const {userData, setUserData} = useContext(UserContext)
@@ -27,7 +28,7 @@ export default function LogOut() {
   return (
     <div>
       {checkLoggedIn && userData && (
-       <button onClick={handleOnClickLogout}>Logout</button>
+       <StyledPrimaryButton onClick={handleOnClickLogout}>Logout</StyledPrimaryButton>
       )}
     </div>
   )

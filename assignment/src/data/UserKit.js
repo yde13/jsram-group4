@@ -13,7 +13,6 @@ export default class {
         const payload = {
             email, password
         }
-
         return this.ourPostFetch(payload, LOGIN_URL)
     }
 
@@ -33,8 +32,7 @@ export default class {
     activateAccount(uid, token) {
         const payload = {
             uid, token
-        };
-        
+        };   
         return this.ourPostFetch(payload, ACTIVATE_USER_URL)
     }
 

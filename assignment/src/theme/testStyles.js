@@ -48,3 +48,38 @@ export const StyledUserInfo = styled.div`
 export const StyledForm = styled.div`
   
 `
+
+export const StyledPrimaryButton = styled.div`
+  margin: 10px;
+  padding: 10px;
+  background-color: ${({theme})=>theme.colors.secondaryDarkColor};
+  font-size: 1.3em;
+  border-radius: 10%;
+  display: inline-block;
+  &:hover{
+    cursor: pointer;
+    background-color: ${({theme})=>theme.colors.navbarColor};
+  }
+`
+
+export const StyledInputLogin = styled.div`
+  font-size: 1.1em;
+  padding: 10px;
+ 
+  input {
+    margin: 0 auto;
+    background-color: whitesmoke;
+    color: black;
+    display: block;
+    padding: 10px;
+  }
+`
+
+export const StyledMainContentContainer = styled.div`
+  margin: 10px;
+`
+export const StyledLoginBox = styled.div`
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+`

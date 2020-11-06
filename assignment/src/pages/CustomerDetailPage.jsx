@@ -3,6 +3,7 @@ import {useHistory} from 'react-router-dom';
 import {CustomerContext} from '../contexts/CustomersContext';
 import CustomerDetailItem from '../components/Customer/CustomerDetailItem';
 import CustomerEditDetails from '../components/Customer/CustomerEditDetails';
+import { StyledPrimaryButton } from '../theme/testStyles';
 
 export default function CustomerDetailPage(props) {
     
@@ -17,6 +18,7 @@ export default function CustomerDetailPage(props) {
         if(customerData) {
             const customerIndex = customerData.results.filter((customer) => customer.id == id)
             setCustomerDetailData(customerIndex[0])
+            
         } else {
             history.push('/customers');
         }
@@ -35,7 +37,8 @@ export default function CustomerDetailPage(props) {
         <>
             {customerDetailData && (
                 <>
-                    <button onClick={handleOnClickEditCustomer}>{editUser === false ? 'Edit Customer' : 'Close Edit Customer'}</button>
+                    
+                    <StyledPrimaryButton onClick={handleOnClickEditCustomer}>{editUser === false ? 'Edit' : 'Exit'}</StyledPrimaryButton>
                     {editUser && <CustomerEditDetails customerID={id} data={customerDetailData}/>} 
                     {!editUser && <CustomerDetailItem data={customerDetailData}/>} 
                 </>
