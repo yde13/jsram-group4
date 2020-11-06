@@ -10,13 +10,13 @@ export default class {
 
     login(email, password) {
         const payload = {
-        email, password
+            email, password
         }
-        
+
         return this.ourPostFetch(payload, LOGIN_URL)
     }
 
-    signup(signupData){
+    signup(signupData) {
         const payload = {
             firstName: signupData.firstName,
             lastName: signupData.lastName,
@@ -39,18 +39,13 @@ export default class {
 
     getMe() {
         const url = `${API_URL}me`
-        return fetch(url, {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${this.getToken()}`
-                }
-            })
+        return this.ourGetFetch(url)
     }
 
     setToken(token) {
         localStorage.setItem("JWT_APP", token)
     }
-    
+
     getToken() {
         return localStorage.getItem("JWT_APP")
     }
@@ -64,10 +59,19 @@ export default class {
         localStorage.removeItem("userData")
     }
 
-    ourPostFetch(payload, url){
+    ourPostFetch(payload, url) {
         return fetch(url, {
             method: 'POST',
             body: JSON.stringify(payload),
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${this.getToken()}`
+            }
+        })
+    }
+
+    ourGetFetch(url) {
+        return fetch(url, {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${this.getToken()}`
