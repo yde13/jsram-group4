@@ -4,6 +4,7 @@ import LoginInput from '../components/Login/LoginInput';
 import ActivateAccount from '../components/Signup/ActivateAccount';
 import { UserContext } from '../contexts/UserContext';
 import UserKit from '../data/UserKit';
+import { StyledLoginBox, StyledMainContentContainer, StyledPrimaryButton } from '../theme/testStyles';
 
 export default function LoginPage(props) {
 	const [emailInput, setEmailInput] = useState('webb19@willandskill.se');
@@ -56,22 +57,24 @@ export default function LoginPage(props) {
 	},[])
 
 	return (
-		<div>
+		<StyledMainContentContainer>
 			{!URLdata && (
 				<>
-				<LoginInput 
-					emailInput={emailInput}
-					passwordInput={passwordInput}
-					setEmailInput={setEmailInput}
-					setPasswordInput={setPasswordInput}
-				/>
-					<button onClick={handleOnClick}>Login</button>
+				<StyledLoginBox>
+					<LoginInput 
+						emailInput={emailInput}
+						passwordInput={passwordInput}
+						setEmailInput={setEmailInput}
+						setPasswordInput={setPasswordInput}
+					></LoginInput>
+					<StyledPrimaryButton onClick={handleOnClick}> Login </StyledPrimaryButton>
+					</StyledLoginBox>
 				</>
 			)}
 			{URLdata && (
 				<ActivateAccount URLdata={URLdata}/>
 			)}
 			{loginStatus && loginStatus}
-		</div>
+		</StyledMainContentContainer>
 	);
 }

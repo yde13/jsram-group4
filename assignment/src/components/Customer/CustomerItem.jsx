@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import CustomerKit from '../../data/CustomerKit';
 import { CustomerContext } from '../../contexts/CustomersContext'
 import styled from 'styled-components'
+import { StyledItem } from '../../theme/testStyles';
 
 
 export default function CustomerItem(props) {
@@ -23,17 +24,6 @@ export default function CustomerItem(props) {
     console.log(customerDataCopy);
     setCustomerData(customerDataCopy)
   }
-
-  const StyledItem  = styled.div`
-    display: flex;
-    flex-direction: column;
-
-    background-color: black;
-    color: white;
-    margin: 10px;
-    padding: 10px;
-    font-size: 1.3rem;
-  `
 
   return (
     <StyledItem>

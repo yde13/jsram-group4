@@ -1,4 +1,5 @@
 import React from 'react'
+import { StyledPrimaryButton } from '../../theme/testStyles'
 
 export default function CustomerForm(props) {
     return (
@@ -62,7 +63,7 @@ export default function CustomerForm(props) {
                             placeholder="Telefonnummer"
                         />
                     </form>
-                    <button onClick={props.handleCreateCustomer}>Create</button>
+                    <StyledPrimaryButton onClick={props.handleCreateCustomer}>Create</StyledPrimaryButton>
                 </div>
     )
 }

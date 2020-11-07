@@ -7,7 +7,6 @@ export default function UserInfo() {
   function checkUserInfo(){
     if(!userData) {
       let test = JSON.parse(localStorage.getItem("userData"));
-      console.log(test);
       setUserData(test)
     }
   }
@@ -20,8 +19,8 @@ export default function UserInfo() {
     <div>
       {userData && (
         <>
-        <span> Logged in as {userData.firstName} {userData.lastName}</span> 
-        <span>Email: {userData.email}</span>
+        <p>Logged in as {userData.firstName} {userData.lastName}</p> 
+        <p>Email: {userData.email}</p>
         </>
       )}
       {!userData && (

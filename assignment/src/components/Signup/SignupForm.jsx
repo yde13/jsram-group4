@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import styles from './SignupForm.module.scss'
 import UserKit from '../../data/UserKit'
+import { StyledPrimaryButton } from '../../theme/testStyles';
 
 export default function SignupForm() {
-  console.log('hej');
   const [signupFormData, setSignupFormData] = useState({
     firstName: '',
     lastName: '',
@@ -90,7 +90,7 @@ export default function SignupForm() {
             </input>
           </li>
           <li>
-            <button onClick={handlOnClickSignup}>Submit</button>
+            <StyledPrimaryButton onClick={handlOnClickSignup}>Submit</StyledPrimaryButton>
           </li>
         </ul>
       </div>

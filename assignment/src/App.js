@@ -1,4 +1,3 @@
-import './App.css';
 import { Route, Switch } from 'react-router-dom'
 import LoginPage from './pages/LoginPage';
 import { useState } from 'react';
@@ -12,6 +11,8 @@ import SignupPage from './pages/SignupPage';
 import UserKit from './data/UserKit'
 import GuardedRoute from './components/Login/GuradedRoute';
 import GlobalStyle from './theme/globalStyles';
+import { Theme } from './theme/Theme';
+
 
 function App() {
   const [userData, setUserData] = useState(null)
@@ -19,7 +20,7 @@ function App() {
   const userKit = new UserKit()
  
   return (
-    <div>
+    <>
       <GlobalStyle />
       <CustomerContext.Provider value={{ customerData, setCustomerData }}>
         <UserContext.Provider value={{ userData, setUserData }}>
@@ -36,9 +37,7 @@ function App() {
         </UserContext.Provider>
       </CustomerContext.Provider>
 
-
-
-    </div>
+    </>
   );
 }
 

@@ -2,8 +2,11 @@ import React, { useContext, useState } from 'react'
 import styles from '../Signup/SignupForm.module.scss'
 import CustomerKit from '../../data/CustomerKit'
 import { CustomerContext } from '../../contexts/CustomersContext'
+import { StyledPrimaryButton } from '../../theme/testStyles'
 
 export default function CustomerEditDetails(props) {
+  const [updateStatus, setUpdateStatus] = useState(false)
+
   const { customerData, setCustomerData } = useContext(CustomerContext)
   const [customerForm, setCustomerForm] = useState({
     name: props.data.name,
@@ -26,6 +29,7 @@ export default function CustomerEditDetails(props) {
         let customerDataCopy = {...customerData}
         customerDataCopy.results.unshift(data);
         setCustomerData(customerDataCopy);
+        setUpdateStatus(true)
       })
       .catch(e => console.log(e))
   }
@@ -39,6 +43,7 @@ export default function CustomerEditDetails(props) {
     <div className={styles.signupForm}>
       <div className={styles.formBody}>
         <ul className={styles.flexOuter}>
+        {updateStatus === true ? 'Update sucessfull' : ''}
           <li>
             <label htmlFor="name">name</label>
             <input 
@@ -110,7 +115,7 @@ export default function CustomerEditDetails(props) {
             </input>
           </li>
           <li>
-            <button onClick={handlOnClickEditUser}>Submit New Info</button>
+            <StyledPrimaryButton onClick={handlOnClickEditUser}>Submit New Info</StyledPrimaryButton>
           </li>
         </ul>
       </div>
