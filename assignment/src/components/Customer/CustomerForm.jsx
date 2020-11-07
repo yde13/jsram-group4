@@ -2,9 +2,7 @@ import React from 'react'
 
 export default function CustomerForm(props) {
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col-md-6">
+                <div className="">
                     <h3>Skapa ny kund</h3>
                     <form>
                         <input 
@@ -66,8 +64,5 @@ export default function CustomerForm(props) {
                     </form>
                     <button onClick={props.handleCreateCustomer}>Create</button>
                 </div>
-            </div>
-            
-        </div>
     )
 }

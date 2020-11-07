@@ -11,7 +11,6 @@ export default function Navbar() {
     display: flex;
     background-color: ${({theme})=>theme.colors.black};
     color: white;
-    margin: 10px;
     padding: 10px;
     font-size: 1.3rem;
   `

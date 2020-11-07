@@ -3,6 +3,8 @@ import CustomerForm from '../components/Customer/CustomerForm';
 import { CustomerContext } from '../contexts/CustomersContext'
 import CustomerKit from '../data/CustomerKit';
 import CustomerItem from '../components/Customer/CustomerItem';
+import styled from 'styled-components'
+
 
 export default function CustomersPage() {
     const url = "https://frebi.willandskill.eu/api/v1/customers/"
@@ -32,14 +34,14 @@ export default function CustomersPage() {
         const payload = formData;
         const customerkit = new CustomerKit;
         customerkit.createCustomer(payload)
-        .then(res => res.json())
-        .then(data => {
-            let customerDataCopy = {...customerData}
-            customerDataCopy.results.unshift(data);
-            console.log("Copy: ", customerDataCopy)
-            setCustomerData(customerDataCopy);
-            console.log("CustomerData: ", customerData && customerData)
-        })
+            .then(res => res.json())
+            .then(data => {
+                let customerDataCopy = { ...customerData }
+                customerDataCopy.results.unshift(data);
+                console.log("Copy: ", customerDataCopy)
+                setCustomerData(customerDataCopy);
+                console.log("CustomerData: ", customerData && customerData)
+            })
     }
 
     function handleInputOnChange(e) {
@@ -50,6 +52,16 @@ export default function CustomersPage() {
     useEffect(() => {
         fetchAllCustomers()
     }, [])
+
+    const StyledList = styled.div`
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-gap: 10px;
+    color: white;
+    padding: 10px;
+    font-size: 1.3rem;
+  `
 
     return (
         <div>
@@ -67,11 +79,17 @@ export default function CustomersPage() {
                 setPhoneNumber={formData["phoneNumber"]}
                 handleCreateCustomer={handleCreateCustomer}
             />
-            {customerData && Object.entries(customerData.results).map((customer, index) => {
+            <StyledList>
 
-                return <CustomerItem key={index} data={customer} value={customer[1].id} />
+                {customerData && Object.entries(customerData.results).map((customer, index) => {
 
-            })}
+                    return (
+                        <CustomerItem key={index} data={customer} value={customer[1].id} />
+                    )
+
+                })}
+            </StyledList>
+
         </div>
 
     )
