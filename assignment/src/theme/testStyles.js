@@ -83,3 +83,13 @@ export const StyledLoginBox = styled.div`
   text-align: center;
   margin: 0 auto;
 `
+
+
+export const StyledDetailPage = styled.div`
+  width: 70%;
+  border-radius: 10px;
+  background-color: ${({theme})=>theme.colors.navbarColor};
+  padding: 20px;
+  margin: auto;
+
+`
