@@ -73,7 +73,7 @@ export const StyledNavItems = styled.div`
   }
 
   img {
-    width: 100px;
+    width: 70px;
     margin-right: 50px;
   }
 `
