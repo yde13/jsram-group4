@@ -1,6 +1,6 @@
 import React from 'react'
-import { StyledForm } from '../../theme/testStyles'
-import { StyledPrimaryButton } from '../../theme/testStyles'
+import { StyledForm } from '../../theme/styledComponents'
+import { StyledPrimaryButton } from '../../theme/styledComponents'
 
 export default function CustomerForm(props) {
     return (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import UserKit from '../../data/UserKit'
-import { StyledPrimaryButton } from '../../theme/testStyles'
+import { StyledPrimaryButton } from '../../theme/styledComponents'
 
 export default function ActivateAccount(props) {
   const UID = props.URLdata.get('uid')

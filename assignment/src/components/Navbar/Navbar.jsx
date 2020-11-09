@@ -2,7 +2,7 @@ import React from 'react'
 import UserInfo from '../User/UserInfo'
 import { Link } from 'react-router-dom'
 import LogOut from '../Login/LogOut'
-import { StyledNav, StyledNavContainer, StyledNavItems, StyledUserInfo } from '../../theme/testStyles'
+import { StyledNav, StyledNavContainer, StyledNavItems, StyledUserInfo } from '../../theme/styledComponents'
 import UserKit from '../../data/UserKit'
 import Image from './logo-g4.png';
 

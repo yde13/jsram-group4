@@ -19,8 +19,8 @@ export default function UserInfo() {
     <div className="userInfoContainer">
       {userData && (
         <>
-        <p>Logged in as {userData.firstName} {userData.lastName}</p> 
-        <p>{userData.email}</p>
+        <div>Logged in as {userData.firstName} {userData.lastName}</div>
+        <div>{userData.email}</div>
         </>
       )}
       {!userData && (

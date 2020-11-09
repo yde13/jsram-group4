@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './SignupForm.module.scss'
 import UserKit from '../../data/UserKit'
-import { StyledPrimaryButton } from '../../theme/testStyles';
+import { StyledEditForm, StyledForm, StyledPrimaryButton } from '../../theme/styledComponents';
 
 export default function SignupForm() {
   const [signupFormData, setSignupFormData] = useState({
@@ -27,9 +27,9 @@ export default function SignupForm() {
   }
 
   return (
-    <div className={styles.signupForm}>
-      <div className={styles.formBody}>
-        <ul className={styles.flexOuter}>
+    <StyledEditForm>
+    <div className="createCustomerForm">
+        <ul className="flexOuter">
           <li>
             <label htmlFor="firstName">First Name</label>
             <input 
@@ -90,10 +90,10 @@ export default function SignupForm() {
             </input>
           </li>
           <li>
-            <StyledPrimaryButton onClick={handlOnClickSignup}>Submit</StyledPrimaryButton>
+            <StyledPrimaryButton onClick={handlOnClickSignup}>Signup</StyledPrimaryButton>
           </li>
         </ul>
       </div>
-    </div>
+    </StyledEditForm>
   )
 }

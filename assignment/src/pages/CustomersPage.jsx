@@ -3,7 +3,7 @@ import CustomerForm from '../components/Customer/CustomerForm';
 import { CustomerContext } from '../contexts/CustomersContext'
 import CustomerKit from '../data/CustomerKit';
 import CustomerItem from '../components/Customer/CustomerItem';
-import { StyledList, StyledMainContentContainer } from '../theme/testStyles';
+import { StyledList, StyledMainContentContainer } from '../theme/styledComponents';
 
 
 export default function CustomersPage() {
@@ -32,21 +32,24 @@ export default function CustomersPage() {
 
     function handleCreateCustomer() {
         const payload = formData;
-        const customerkit = new CustomerKit;
+        const customerkit = new CustomerKit();
         customerkit.createCustomer(payload)
             .then(res => res.json())
             .then(data => {
-                let customerDataCopy = { ...customerData }
-                customerDataCopy.results.unshift(data);
-                console.log("Copy: ", customerDataCopy)
-                setCustomerData(customerDataCopy);
-                console.log("CustomerData: ", customerData && customerData)
+                if (data.hasOwnProperty('id')) {
+                    let customerDataCopy = { ...customerData }
+                    customerDataCopy.results.unshift(data);
+                    console.log("Copy: ", customerDataCopy)
+                    setCustomerData(customerDataCopy);
+                    console.log("CustomerData: ", customerData && customerData)
+                } else {
+                    console.log('Something went wrong in the request');
+                }
             })
     }
 
     function handleInputOnChange(e) {
         setFormData({ ...formData, [e.target.name]: e.target.value });
-        console.log(formData);
     }
 
     useEffect(() => {
@@ -74,7 +77,7 @@ export default function CustomersPage() {
                 {customerData && Object.entries(customerData.results).map((customer, index) => {
 
                     return (
-                        <CustomerItem key={index} data={customer} value={customer[1].id} />
+                        <CustomerItem key={index} data={customer} id={customer[1].id} />
                     )
 
                 })}

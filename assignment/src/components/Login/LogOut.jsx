@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { UserContext } from '../../contexts/UserContext'
 import UserKit from '../../data/UserKit'
 import { useHistory } from "react-router-dom";
-import { StyledPrimaryButton } from '../../theme/testStyles';
+import { StyledPrimaryButton } from '../../theme/styledComponents';
 
 export default function LogOut() {
   const {userData, setUserData} = useContext(UserContext)

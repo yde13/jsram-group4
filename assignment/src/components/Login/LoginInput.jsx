@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledInputLogin } from '../../theme/testStyles'
+import { StyledInputLogin } from '../../theme/styledComponents'
 
 export default function LoginInput(props) {
   return (

@@ -1,12 +1,38 @@
-import React from 'react'
-import { LabelContainer, InfoContainer, StyledDetailPage, DetailHeader } from '../../theme/testStyles';
+import React, {useContext} from 'react'
+import { LabelContainer, InfoContainer, StyledDetailPage, DetailHeader, StyledDeleteButton } from '../../theme/styledComponents';
+import CustomerKit from '../../data/CustomerKit';
+import { CustomerContext } from '../../contexts/CustomersContext'
+import { useHistory } from "react-router-dom";
 
 export default function CustomerDetailItem(props) {
-
+    const { customerData, setCustomerData } = useContext(CustomerContext)
     const {name, organisationNr, vatNr, paymentTerm, website, email, phoneNumber} = props.data;
+    const customerKit = new CustomerKit()
+    const history = useHistory();
+    
+     const id = props.customerID
+     console.log(id);
+
+    async function handleDeleteCustomer() {
+
+        const res = await customerKit.deleteOneCustomer(id)
+        if(res.status === 204) {
+          let customerDataCopy = { ...customerData }
+    
+          customerDataCopy.results = customerData.results.filter((item, index) => item.id !== id)
+      
+          console.log(customerDataCopy);
+          setCustomerData(customerDataCopy)
+          history.push('/customers')
+        } else {
+          console.log('failed to delete customer');
+        }
+    
+      }
+
 
     return (
-       <>   <StyledDetailPage> 
+       <> <StyledDetailPage> 
            <DetailHeader>{name}</DetailHeader>
             <LabelContainer>
 
@@ -29,6 +55,10 @@ export default function CustomerDetailItem(props) {
             <p>{phoneNumber}</p>
     
             </InfoContainer>
+            <div></div>
+            <StyledDeleteButton onClick={handleDeleteCustomer}>
+            Delete
+            </StyledDeleteButton>
             </StyledDetailPage> 
         </>
     )

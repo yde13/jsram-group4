@@ -1,9 +1,10 @@
 import React from 'react'
+import { StyledMainContentContainer } from '../theme/styledComponents'
 
 export default function Home() {
   return (
-    <div>
+    <StyledMainContentContainer>
       <h1>Homepage</h1>
-    </div>
+    </StyledMainContentContainer>
   )
 }

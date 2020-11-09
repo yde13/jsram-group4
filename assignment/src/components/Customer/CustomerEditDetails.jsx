@@ -1,8 +1,7 @@
 import React, { useContext, useState } from 'react'
-import styles from '../Signup/SignupForm.module.scss'
 import CustomerKit from '../../data/CustomerKit'
 import { CustomerContext } from '../../contexts/CustomersContext'
-import { StyledPrimaryButton } from '../../theme/testStyles'
+import { DetailHeader, StyledEditForm, StyledPrimaryButton } from '../../theme/styledComponents'
 
 export default function CustomerEditDetails(props) {
   const [updateStatus, setUpdateStatus] = useState(false)
@@ -40,9 +39,14 @@ export default function CustomerEditDetails(props) {
   }
 
   return (
-    <div className={styles.signupForm}>
-      <div className={styles.formBody}>
-        <ul className={styles.flexOuter}>
+   
+
+    <StyledEditForm>
+     
+    <div className="createCustomerForm" >
+      <DetailHeader>{customerForm['name']}</DetailHeader>
+  
+        <ul className="flexOuter">
         {updateStatus === true ? 'Update sucessfull' : ''}
           <li>
             <label htmlFor="name">name</label>
@@ -118,8 +122,9 @@ export default function CustomerEditDetails(props) {
             <StyledPrimaryButton onClick={handlOnClickEditUser}>Submit New Info</StyledPrimaryButton>
           </li>
         </ul>
-      </div>
     </div>
+    </StyledEditForm>
+  
   )
 }
 

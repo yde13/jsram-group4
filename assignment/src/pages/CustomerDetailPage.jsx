@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom';
 import {CustomerContext} from '../contexts/CustomersContext';
 import CustomerDetailItem from '../components/Customer/CustomerDetailItem';
 import CustomerEditDetails from '../components/Customer/CustomerEditDetails';
-import { StyledPrimaryButton } from '../theme/testStyles';
+import { StyledMainContentContainer, StyledPrimaryButton } from '../theme/styledComponents';
 
 export default function CustomerDetailPage(props) {
     
@@ -35,18 +35,18 @@ export default function CustomerDetailPage(props) {
 
     return (
       
-        <>
+        <StyledMainContentContainer>
           
             {customerDetailData && (
                 <>       
                     <StyledPrimaryButton onClick={handleOnClickEditCustomer}>{editUser === false ? 'Edit' : 'Exit'}</StyledPrimaryButton>
                     {editUser && <CustomerEditDetails customerID={id} data={customerDetailData}/>} 
-                    {!editUser && <CustomerDetailItem data={customerDetailData}/>} 
+                    {!editUser && <CustomerDetailItem  customerID={id} data={customerDetailData}/>} 
                   
                 </>
                
             )}
-        </>
+        </StyledMainContentContainer>
      
     )
 }
