@@ -1,8 +1,9 @@
 export const Theme = {
     colors: {
-        navbarColor: '#081c15',
-        mainDarkColor: '#1b4332',
-        secondaryDarkColor: '#2d6a4f',
+        mainDarkColor: '#1f1f1f',
+        navbarColor: '#022c43',
+        secondaryDarkColor: '#115173',
+        thirdDarkColor: '#053f5e',
         white: '#fffff',
         red: '#ff0000'
 
