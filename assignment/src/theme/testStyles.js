@@ -10,20 +10,28 @@ export const StyledList = styled.div`
   font-size: 1.3rem;
 `
 
-export const StyledItem  = styled.div`
+export const StyledItem = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: ${({theme})=>theme.colors.secondaryDarkColor};
+  background-color: ${({ theme }) => theme.colors.secondaryDarkColor};
   color: white;
   margin: 10px;
   padding: 10px;
-  font-size: 1.3rem;
+  font-size: 1rem;
 `
 
-export const StyledNav  = styled.div`
+export const StyledDeleteBtn = styled.div`
+background: ${({ theme }) => theme.colors.red};
+color: ${({ theme }) => theme.colors.white};
+cursor: pointer;
+text-align: center;
+  
+`
+
+export const StyledNav = styled.div`
   width: 100%;
   display: flex;
-  background-color: ${({theme})=>theme.colors.navbarColor};
+  background-color: ${({ theme }) => theme.colors.navbarColor};
   color: white;
   padding: 10px;
   font-size: 1.3rem;
@@ -52,13 +60,13 @@ export const StyledForm = styled.div`
 export const StyledPrimaryButton = styled.div`
   margin: 10px;
   padding: 10px;
-  background-color: ${({theme})=>theme.colors.secondaryDarkColor};
+  background-color: ${({ theme }) => theme.colors.secondaryDarkColor};
   font-size: 1.3em;
   border-radius: 10%;
   display: inline-block;
   &:hover{
     cursor: pointer;
-    background-color: ${({theme})=>theme.colors.navbarColor};
+    background-color: ${({ theme }) => theme.colors.navbarColor};
   }
 `
 
