@@ -103,7 +103,8 @@ export const StyledForm = styled.div`
 
 .flexOuter input {
   border-radius: 5px;
-  border: 2px solid ${({theme})=>theme.colors.mainDarkColor};
+  border-bottom: 2px solid white;
+  color: white;
   background: ${({theme})=>theme.colors.secondaryDarkColor};
   ::placeholder {
     color: ${({theme})=>theme.colors.mainDarkColor};

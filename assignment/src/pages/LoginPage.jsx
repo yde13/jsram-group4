@@ -38,8 +38,8 @@ export default function LoginPage(props) {
 					.then(data =>  {
 						setUserData(data)
 						userKit.setUserInfo(data)
+						history.push('/')
 					})
-					history.push('/')
 				}
 			})
 	};
