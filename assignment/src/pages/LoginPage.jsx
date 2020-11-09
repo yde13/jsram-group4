@@ -73,7 +73,7 @@ export default function LoginPage(props) {
 				</>
 			)}
 			{URLdata && (
-				<ActivateAccount URLdata={URLdata}/>
+				<ActivateAccount setURLdata={setURLdata} URLdata={URLdata}/>
 			)}
 			{loginStatus && loginStatus}
 		</StyledMainContentContainer>

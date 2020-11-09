@@ -34,12 +34,12 @@ export default class {
             uid, token
         };
           
-        return this.ourPostFetch(payload, ACTIVATE_USER_URL, 'private')
+        return this.ourPostFetch(payload, ACTIVATE_USER_URL, 'public')
     }
 
     getMe() {
         const url = `${API_URL}me`
-        return this.ourGetFetch(url, 'public')
+        return this.ourGetFetch(url, 'private')
     }
 
     setToken(token) {
@@ -76,18 +76,20 @@ export default class {
 
     ourPostFetch(payload, url, type){
         let headers = {}
-        type === 'public' ? headers = this.ourPublicHeaders() : headers = this.ourPrivateHeaders
+        type === 'public' ? headers = this.ourPublicHeaders() : headers = this.ourPrivateHeaders()
+        console.log(headers);
         return fetch(url, {
             method: 'POST',
             body: JSON.stringify(payload),
-            headers
+            headers: headers
         })
     }
 
     ourGetFetch(url, type) {
         let headers = {}
-        type === 'public' ? headers = this.ourPublicHeaders() : headers = this.ourPrivateHeaders
-        return fetch(url, { headers })
+        type === 'public' ? headers = this.ourPublicHeaders() : headers = this.ourPrivateHeaders()
+        console.log(headers);
+        return fetch(url, { headers: headers })
     }
 
     ourPrivateHeaders() {
@@ -99,7 +101,7 @@ export default class {
 
     ourPublicHeaders() {
         return {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json"
         }
     }
     

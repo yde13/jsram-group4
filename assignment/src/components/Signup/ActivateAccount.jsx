@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import UserKit from '../../data/UserKit'
-import { StyledPrimaryButton } from '../../theme/styledComponents'
+import { StyledInputLogin, StyledLoginBox, StyledPrimaryButton } from '../../theme/styledComponents'
+import { useHistory } from 'react-router-dom'
 
 export default function ActivateAccount(props) {
   const UID = props.URLdata.get('uid')
@@ -10,37 +11,64 @@ export default function ActivateAccount(props) {
   const [accountedCreated, setAccountCreated] = useState(false)
 
   const userKit = new UserKit()
+  const history = new useHistory()
 
   function handleOnClickActivateAccount() {
     userKit.activateAccount(UIDdata, tokenData)
     .then(res => {
-      res.status === 204 ? setAccountCreated(true) : setAccountCreated(false)
+      if( res.status === 204) {
+        setAccountCreated(true)
+        
+      } else {
+        setAccountCreated(false)
+      }
     })
   }
 
+  function handleOnClickChangeUrl () {
+    props.setURLdata(null)
+    history.replace('/login')
+  }
+
   return (
-    <div>
-      {props.URLdata && (
+    <StyledLoginBox>
+      {!accountedCreated && (
         <>
-          <input
-            type='text'
-            value={UID}
-            onChange={e => setUIDdata(e.target.value)}
-          />
-          <input
-            type='text'
-            value={TOKEN}
-            onChange={e => setTokenData(e.target.value)}
-          />
-          <StyledPrimaryButton onClick={handleOnClickActivateAccount}>Activate account</StyledPrimaryButton>
-          {accountedCreated && (
-            <p>Account created! woh</p>
-          )}
-          {!accountedCreated && (
-            <p>Account not activated yet</p>
-          )}
+      <StyledInputLogin>
+        
+        {props.URLdata && (
+          <>
+          <label htmlFor="UID">UID</label>
+            <input
+              name="UID"
+              type='text'
+              value={UID}
+              onChange={e => setUIDdata(e.target.value)}
+            />
+            <label htmlFor="token">Token</label>
+            <input
+              name="token"
+              type='text'
+              value={TOKEN}
+              onChange={e => setTokenData(e.target.value)}
+            />
+            
+          </>
+        )}
+      </StyledInputLogin>
+      
+      <StyledPrimaryButton onClick={handleOnClickActivateAccount}>Activate account</StyledPrimaryButton>
+      <p>Account not created yey</p>
+      </>
+      )}
+
+      {accountedCreated && (
+        <>
+        <StyledPrimaryButton onClick={handleOnClickChangeUrl}>Login here</StyledPrimaryButton>
+        <p>Account created! woh</p>
         </>
       )}
-    </div>
+    
+    </StyledLoginBox>
   )
 }

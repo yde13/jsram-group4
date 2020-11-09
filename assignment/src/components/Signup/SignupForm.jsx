@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import styles from './SignupForm.module.scss'
 import UserKit from '../../data/UserKit'
 import { StyledEditForm, StyledForm, StyledPrimaryButton } from '../../theme/styledComponents';
 
@@ -12,13 +11,22 @@ export default function SignupForm() {
     organisationName: '',
     organisationKind: '' 
   })
+  const [signupProgress, setSignupProgress] = useState('')
 
   const userKit = new UserKit()
 
   function handlOnClickSignup () {
     userKit.signup(signupFormData)
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => {
+      console.log(data)
+      if(data.hasOwnProperty('firstName')){
+        setSignupProgress('SIgnup success, look in your email inbox for activation link')
+      } else {
+        console.log('failed');
+        setSignupProgress('Signup failed')
+      }
+    })
   }
 
   function handleInputOnChange(e) {
@@ -90,7 +98,11 @@ export default function SignupForm() {
             </input>
           </li>
           <li>
+    
             <StyledPrimaryButton onClick={handlOnClickSignup}>Signup</StyledPrimaryButton>
+            {signupProgress !== '' && (
+              <p>{signupProgress}</p>
+            ) }
           </li>
         </ul>
       </div>
