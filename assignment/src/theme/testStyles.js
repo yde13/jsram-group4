@@ -91,3 +91,43 @@ export const StyledLoginBox = styled.div`
   text-align: center;
   margin: 0 auto;
 `
+
+export const StyledDetailPage = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  width: 60%;
+  min-width: 330px;
+  border-radius: 10px;
+  background-color: ${({theme})=>theme.colors.navbarColor};
+  margin: auto;
+  box-shadow: 5px 5px 15px 5px #000000;
+`
+export const DetailHeader = styled.h2`
+max-width: 100%;
+background-color: ${({theme})=>theme.colors.secondaryDarkColor};
+grid-row: 1/2;
+grid-column: 1/3;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+text-align: center;
+padding-top: 20px;
+`
+
+export const InfoContainer = styled.div`
+  grid-row: 2/5;
+  grid-column: 2/3;
+  align-content: center;
+  padding: 20px;
+  text-align: right;
+  margin-right: 25px;
+  `
+
+export const LabelContainer = styled.div`
+grid-row: 2/5;
+grid-column: 1/2;
+align-content: center;
+padding: 20px;
+margin-left: 25px;
+
+`
