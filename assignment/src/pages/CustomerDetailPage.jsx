@@ -34,15 +34,19 @@ export default function CustomerDetailPage(props) {
     }, [])
 
     return (
+      
         <>
+          
             {customerDetailData && (
-                <>
-                    
+                <>       
                     <StyledPrimaryButton onClick={handleOnClickEditCustomer}>{editUser === false ? 'Edit' : 'Exit'}</StyledPrimaryButton>
                     {editUser && <CustomerEditDetails customerID={id} data={customerDetailData}/>} 
                     {!editUser && <CustomerDetailItem data={customerDetailData}/>} 
+                  
                 </>
+               
             )}
         </>
+     
     )
 }

@@ -1,20 +1,35 @@
 import React from 'react'
-import { StyledItem } from '../../theme/testStyles';
+import { LabelContainer, InfoContainer, StyledDetailPage, DetailHeader } from '../../theme/testStyles';
 
 export default function CustomerDetailItem(props) {
 
     const {name, organisationNr, vatNr, paymentTerm, website, email, phoneNumber} = props.data;
 
     return (
-        <StyledItem>
-       
-            <p>Name: {name}</p>
-            <p>Organiastion number: {organisationNr}</p>
-            <p>Vat-number: {vatNr}</p>
-            <p>Payment Term: {paymentTerm}</p>
-            <p>Website: {website}</p>
-            <p>Email: {email}</p>
-            <p>Phone number: {phoneNumber}</p>
-        </StyledItem>
+       <>   <StyledDetailPage> 
+           <DetailHeader>{name}</DetailHeader>
+            <LabelContainer>
+
+            <p>Organiastion number:</p> 
+            <p>Vat-number: </p>
+            <p>Payment Term: </p>
+            <p>Website:   </p>
+            <p>Email: </p>
+            <p>Phone number: </p>
+      
+            </LabelContainer>
+             
+            <InfoContainer>
+  
+            <p>{organisationNr}</p>
+            <p>{vatNr}</p>
+            <p>{paymentTerm}</p>
+            <p>{website}</p>
+            <p>{email}</p>
+            <p>{phoneNumber}</p>
+    
+            </InfoContainer>
+            </StyledDetailPage> 
+        </>
     )
 }
