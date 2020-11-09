@@ -16,11 +16,11 @@ export default function UserInfo() {
   }, [])
 
   return (
-    <div>
+    <div className="userInfoContainer">
       {userData && (
         <>
         <p>Logged in as {userData.firstName} {userData.lastName}</p> 
-        <p>Email: {userData.email}</p>
+        <p>{userData.email}</p>
         </>
       )}
       {!userData && (
