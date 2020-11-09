@@ -30,20 +30,14 @@ export default class {
 
   ourGetFetch(url) {
     return fetch(url, {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.getToken()}`
-      }
+      headers: this.ourPrivateHeaders()
     })
   }
 
   ourDeleteFetch(url) {
     return fetch(url, {
       method: 'DELETE',
-      headers: {
-        "Authorization": `Bearer ${this.getToken()}`,
-        "content-type": "application/json"
-      }
+      headers: this.ourPrivateHeaders()
     })
   }
 
@@ -51,10 +45,7 @@ export default class {
     return fetch(url, {
       method: 'PUT',
       body: JSON.stringify(payload),
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.getToken()}`
-      }
+      headers: this.ourPrivateHeaders()
     })
   }
 
@@ -62,10 +53,14 @@ export default class {
     return fetch(url, {
         method: 'POST',
         body: JSON.stringify(payload),
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${this.getToken()}`
-        }
+        headers: this.ourPrivateHeaders()
     })
+  }
+
+  ourPrivateHeaders() {
+    return {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${this.getToken()}`
+    }
   }
 }

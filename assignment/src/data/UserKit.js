@@ -13,7 +13,7 @@ export default class {
         const payload = {
             email, password
         }
-        return this.ourPostFetch(payload, LOGIN_URL)
+        return this.ourPostFetch(payload, LOGIN_URL, 'public')
     }
 
     signup(signupData) {
@@ -25,20 +25,21 @@ export default class {
             organisationName: signupData.organisationName,
             organisationKind: signupData.organisationKind
         }
-
-        return this.ourPostFetch(payload, USER_URL)
+        return this.ourPostFetch(payload, USER_URL, 'public')
     }
 
     activateAccount(uid, token) {
+
         const payload = {
             uid, token
-        };   
-        return this.ourPostFetch(payload, ACTIVATE_USER_URL)
+        };
+          
+        return this.ourPostFetch(payload, ACTIVATE_USER_URL, 'private')
     }
 
     getMe() {
         const url = `${API_URL}me`
-        return this.ourGetFetch(url)
+        return this.ourGetFetch(url, 'public')
     }
 
     setToken(token) {
@@ -73,24 +74,34 @@ export default class {
        
     }
 
-    ourPostFetch(payload, url){
+    ourPostFetch(payload, url, type){
+        let headers = {}
+        type === 'public' ? headers = this.ourPublicHeaders() : headers = this.ourPrivateHeaders
         return fetch(url, {
             method: 'POST',
             body: JSON.stringify(payload),
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${this.getToken()}`
-            }
+            headers
         })
     }
 
-    ourGetFetch(url) {
-        return fetch(url, {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${this.getToken()}`
-            }
-        })
+    ourGetFetch(url, type) {
+        let headers = {}
+        type === 'public' ? headers = this.ourPublicHeaders() : headers = this.ourPrivateHeaders
+        return fetch(url, { headers })
     }
+
+    ourPrivateHeaders() {
+        return {
+             "Content-Type": "application/json",
+             "Authorization": `Bearer ${this.getToken()}`
+        }
+    }
+
+    ourPublicHeaders() {
+        return {
+            "Content-Type": "application/json",
+        }
+    }
+    
 
 }
