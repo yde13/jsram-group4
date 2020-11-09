@@ -15,14 +15,19 @@ export default function CustomerItem(props) {
 
   const id = props.value
 
-  function handleDeleteCustomer() {
-    customerKit.deleteOneCustomer(id)
-    let customerDataCopy = { ...customerData }
+  async function handleDeleteCustomer() {
+    const res = await customerKit.deleteOneCustomer(id)
+    if(res.status === 204) {
+      let customerDataCopy = { ...customerData }
 
-    customerDataCopy.results = customerData.results.filter((item, index) => item.id !== id)
+      customerDataCopy.results = customerData.results.filter((item, index) => item.id !== id)
+  
+      console.log(customerDataCopy);
+      setCustomerData(customerDataCopy)
+    } else {
+      console.log('failed to delete customer');
+    }
 
-    console.log(customerDataCopy);
-    setCustomerData(customerDataCopy)
   }
 
   return (
