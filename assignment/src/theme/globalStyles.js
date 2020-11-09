@@ -9,16 +9,19 @@ const GlobalStyle = createGlobalStyle`
 }  
 
 body {
-    background-color: ${(props) => props.theme.colors.mainDarkColor};
-    color: #96DEF6;
-    font-family: ${(props) => props.theme.fonts.text}
-  }
- 
-  code {
+  background-color: ${(props) => props.theme.colors.mainDarkColor};
+  color: white;
+  font-family: ${(props) => props.theme.fonts.text}
+}
 
-  }
+a {
+  color: white;
+}
 
-  
+h1 {
+  margin-bottom: 20px;
+}
+
 `;
  
 export default GlobalStyle;
