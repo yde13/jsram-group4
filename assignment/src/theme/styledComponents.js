@@ -123,7 +123,7 @@ export const StyledForm = styled.div`
 
 .flexOuter input {
   border-radius: 5px;
-  /* border-bottom: 2px solid ${({theme})=>theme.colors.mainDarkColor}; */
+  border: 2px solid ${({theme})=>theme.colors.mainDarkColor};
   color: white;
   background: ${({theme})=>theme.colors.secondaryDarkColor};
   ::placeholder {
@@ -167,6 +167,7 @@ export const StyledPrimaryButton = styled.button`
   padding: 10px;
   background-color: ${({theme})=>theme.colors.thirdDarkColor};
   color: white;
+  outline: none;
   font-size: 1rem;
   border: none;
   border-radius: 5px;
@@ -174,6 +175,9 @@ export const StyledPrimaryButton = styled.button`
   &:hover{
     cursor: pointer;
     background-color: ${({theme})=>theme.colors.mainDarkColor};
+  }
+  :focus {
+    outline: none;
   }
   height: 50%;
   
