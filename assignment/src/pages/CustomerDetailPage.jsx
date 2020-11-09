@@ -4,8 +4,6 @@ import {CustomerContext} from '../contexts/CustomersContext';
 import CustomerDetailItem from '../components/Customer/CustomerDetailItem';
 import CustomerEditDetails from '../components/Customer/CustomerEditDetails';
 import { StyledPrimaryButton } from '../theme/testStyles';
-import {StyledDetailPage} from '../theme/testStyles';
-
 
 export default function CustomerDetailPage(props) {
     
@@ -40,12 +38,11 @@ export default function CustomerDetailPage(props) {
         <>
           
             {customerDetailData && (
-                <>      
-                  <StyledDetailPage>       
+                <>       
                     <StyledPrimaryButton onClick={handleOnClickEditCustomer}>{editUser === false ? 'Edit' : 'Exit'}</StyledPrimaryButton>
                     {editUser && <CustomerEditDetails customerID={id} data={customerDetailData}/>} 
                     {!editUser && <CustomerDetailItem data={customerDetailData}/>} 
-                    </StyledDetailPage> 
+                  
                 </>
                
             )}
