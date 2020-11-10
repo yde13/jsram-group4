@@ -83,7 +83,7 @@ export default function CustomersPage() {
             />
             <StyledList>
 
-                {customerData && Object.entries(customerData.results).map((customer, index) => {
+                {customerData && Object.entries(customerData.results).reverse().map((customer, index) => {
 
                     return (
                         <CustomerItem key={index} data={customer} id={customer[1].id} />
