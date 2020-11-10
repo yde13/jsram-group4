@@ -28,6 +28,16 @@ export default class {
     return localStorage.getItem("JWT_APP")
   }
 
+  checkVATNRValidation(vatnr){
+    let nmr = vatnr.slice(0,2)
+    let text = vatnr.slice(2,12)
+    if(nmr === 'SE' && /^\d+$/.test(text) && vatnr.length === 12) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   ourGetFetch(url) {
     return fetch(url, {
       headers: this.ourPrivateHeaders()

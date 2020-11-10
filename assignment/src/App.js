@@ -11,7 +11,6 @@ import SignupPage from './pages/SignupPage';
 import UserKit from './data/UserKit'
 import GuardedRoute from './components/Login/GuradedRoute';
 import GlobalStyle from './theme/globalStyles';
-import { Theme } from './theme/Theme';
 
 
 function App() {

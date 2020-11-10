@@ -10,19 +10,19 @@ export default function CustomerDetailItem(props) {
     const customerKit = new CustomerKit()
     const history = useHistory();
     
-     const id = props.customerID
-     console.log(id);
+    const id = props.customerID
 
     async function handleDeleteCustomer() {
 
         const res = await customerKit.deleteOneCustomer(id)
         if(res.status === 204) {
-          let customerDataCopy = { ...customerData }
-    
-          customerDataCopy.results = customerData.results.filter((item, index) => item.id !== id)
-      
-          console.log(customerDataCopy);
-          setCustomerData(customerDataCopy)
+          let editedCustomer = {...customerData}  
+          let customerArray = editedCustomer.results
+          let customerIndex = customerArray.findIndex((obj => obj.id === id));
+          customerArray.splice(customerIndex, 1)
+  
+          setCustomerData(editedCustomer);
+
           history.push('/customers')
         } else {
           console.log('failed to delete customer');

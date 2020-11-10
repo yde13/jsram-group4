@@ -8,6 +8,7 @@ import { StyledList, StyledMainContentContainer } from '../theme/styledComponent
 
 export default function CustomersPage() {
     const url = "https://frebi.willandskill.eu/api/v1/customers/"
+    const [formInfo, setFormInfo] = useState('')
     const { customerData, setCustomerData } = useContext(CustomerContext)
     const customerKit = new CustomerKit();
 
@@ -23,29 +24,35 @@ export default function CustomersPage() {
     })
 
     function fetchAllCustomers() {
-        customerKit.fetchAll()
+        if(!customerData) {
+            customerKit.fetchAll()
             .then(res => res.json())
             .then(customers => {
                 setCustomerData(customers)
             })
+        }
+
     }
 
     function handleCreateCustomer() {
         const payload = formData;
         const customerkit = new CustomerKit();
-        customerkit.createCustomer(payload)
+        let check = customerKit.checkVATNRValidation(payload['vatNr'])
+        if(check) {
+            customerkit.createCustomer(payload)
             .then(res => res.json())
             .then(data => {
                 if (data.hasOwnProperty('id')) {
                     let customerDataCopy = { ...customerData }
-                    customerDataCopy.results.unshift(data);
-                    console.log("Copy: ", customerDataCopy)
+                    customerDataCopy.results.push(data);
                     setCustomerData(customerDataCopy);
-                    console.log("CustomerData: ", customerData && customerData)
                 } else {
                     console.log('Something went wrong in the request');
                 }
             })
+        } else {
+            setFormInfo('Incorrect vatNr format')
+        }
     }
 
     function handleInputOnChange(e) {
@@ -71,10 +78,11 @@ export default function CustomersPage() {
                 setEmail={formData["email"]}
                 setPhoneNumber={formData["phoneNumber"]}
                 handleCreateCustomer={handleCreateCustomer}
+                formInfo={formInfo}
             />
             <StyledList>
 
-                {customerData && Object.entries(customerData.results).map((customer, index) => {
+                {customerData && Object.entries(customerData.results).reverse().map((customer, index) => {
 
                     return (
                         <CustomerItem key={index} data={customer} id={customer[1].id} />

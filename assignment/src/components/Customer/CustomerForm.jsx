@@ -30,7 +30,7 @@ export default function CustomerForm(props) {
                                 <li>
                                     <label for="vatNr">VAT number</label>
                                     <input 
-                                        type="number"
+                                        type="text"
                                         name="vatNr"
                                         value={props.setVatNr}
                                         onChange={props.onChange}
@@ -89,6 +89,7 @@ export default function CustomerForm(props) {
                                 </li>
                                 <li>
                                     <StyledPrimaryButton onClick={props.handleCreateCustomer}>Create</StyledPrimaryButton>
+                                    {props.formInfo}
                                 </li>
                             </ul>
                         </div>

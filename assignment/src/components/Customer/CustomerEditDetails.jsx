@@ -25,10 +25,18 @@ export default function CustomerEditDetails(props) {
     customerKit.editCustomerInfo(customerID, customerForm)
       .then(res => res.json())
       .then(data => {
-        let customerDataCopy = {...customerData}
-        customerDataCopy.results.unshift(data);
-        setCustomerData(customerDataCopy);
-        setUpdateStatus(true)
+        if(data.hasOwnProperty('id')) {
+          let editedCustomer = {...customerData}  
+          let customerArray = editedCustomer.results
+          let customerIndex = customerArray.findIndex((obj => obj.id === data.id));
+          customerArray[customerIndex] = data
+  
+          setCustomerData(editedCustomer);
+          setUpdateStatus(true)
+        } else {
+          console.log('something went wrong');
+        }
+
       })
       .catch(e => console.log(e))
   }
@@ -47,7 +55,7 @@ export default function CustomerEditDetails(props) {
       <DetailHeader>{customerForm['name']}</DetailHeader>
   
         <ul className="flexOuter">
-        {updateStatus === true ? 'Update sucessfull' : ''}
+      
           <li>
             <label htmlFor="name">name</label>
             <input 
@@ -120,6 +128,7 @@ export default function CustomerEditDetails(props) {
           </li>
           <li>
             <StyledPrimaryButton onClick={handlOnClickEditUser}>Submit New Info</StyledPrimaryButton>
+            {updateStatus === true ? 'Update sucessfull' : ''}
           </li>
         </ul>
     </div>
