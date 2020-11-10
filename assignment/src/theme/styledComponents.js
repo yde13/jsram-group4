@@ -145,7 +145,7 @@ export const StyledForm = styled.div`
 }
 
 .flexOuter > li > label + * {
-  flex: 1 0 220px;
+  flex: 1 0 180px;
   padding: 5px;
 }
 `
@@ -155,11 +155,6 @@ export const StyledEditForm = styled(StyledForm)`
   .createCustomerForm {
     background-color: ${({theme})=>theme.colors.firstDarkColor};
     margin: 0 auto;
-    width: 50%;
-    padding: 0;
-    ul {
-      padding: 20px;
-    }
   }
 `
 
