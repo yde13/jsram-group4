@@ -46,6 +46,7 @@ export default function CustomersPage() {
                     let customerDataCopy = { ...customerData }
                     customerDataCopy.results.push(data);
                     setCustomerData(customerDataCopy);
+                    setFormInfo('Customer added!')
                 } else {
                     console.log('Something went wrong in the request');
                 }
@@ -82,7 +83,7 @@ export default function CustomersPage() {
             />
             <StyledList>
 
-                {customerData && Object.entries(customerData.results).reverse().map((customer, index) => {
+                {customerData && Object.entries(customerData.results).map((customer, index) => {
 
                     return (
                         <CustomerItem key={index} data={customer} id={customer[1].id} />

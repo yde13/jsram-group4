@@ -29,6 +29,7 @@ export default function CustomerEditDetails(props) {
           let editedCustomer = {...customerData}  
           let customerArray = editedCustomer.results
           let customerIndex = customerArray.findIndex((obj => obj.id === data.id));
+          console.log(customerIndex);
           customerArray[customerIndex] = data
   
           setCustomerData(editedCustomer);
