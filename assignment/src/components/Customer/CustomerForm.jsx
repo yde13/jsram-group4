@@ -8,7 +8,7 @@ export default function CustomerForm(props) {
                         <div className="createCustomerForm">
                             <ul className="flexOuter">
                                 <li>
-                                    <label for="name">Name</label>
+                                    <label htmlFor="name">Name</label>
                                     <input 
                                         type="text"
                                         name="name"
@@ -18,7 +18,7 @@ export default function CustomerForm(props) {
                                     />
                                 </li>
                                 <li>
-                                    <label for="organisationNr">Organisation number</label>
+                                    <label htmlFor="organisationNr">Organisation number</label>
                                     <input 
                                         type="number"
                                         name="organisationNr"
@@ -28,7 +28,7 @@ export default function CustomerForm(props) {
                                     />
                                 </li>
                                 <li>
-                                    <label for="vatNr">VAT number</label>
+                                    <label htmlFor="vatNr">VAT number</label>
                                     <input 
                                         type="text"
                                         name="vatNr"
@@ -38,7 +38,7 @@ export default function CustomerForm(props) {
                                     />
                                 </li>
                                 <li>
-                                    <label for="reference">Reference</label>
+                                    <label htmlFor="reference">Reference</label>
                                     <input 
                                         type="text"
                                         name="reference"
@@ -48,7 +48,7 @@ export default function CustomerForm(props) {
                                     />
                                 </li>
                                 <li>
-                                <label for="paymentTerm">Payment term</label>
+                                <label htmlFor="paymentTerm">Payment term</label>
                                     <input 
                                         type="number"
                                         name="paymentTerm"
@@ -58,7 +58,7 @@ export default function CustomerForm(props) {
                                     />
                                 </li>
                                 <li>
-                                <label for="website">Website</label>
+                                <label htmlFor="website">Website</label>
                                     <input 
                                         type="text"
                                         name="website"
@@ -68,7 +68,7 @@ export default function CustomerForm(props) {
                                     />
                                 </li>
                                 <li>
-                                <label for="email">Email</label>
+                                <label htmlFor="email">Email</label>
                                 <input 
                                     type="text"
                                     name="email"
@@ -78,7 +78,7 @@ export default function CustomerForm(props) {
                                 />
                                 </li>
                                 <li>
-                                    <label for="phoneNumber">Phone number</label>
+                                    <label htmlFor="phoneNumber">Phone number</label>
                                     <input 
                                         type="number"
                                         name="phoneNumber"

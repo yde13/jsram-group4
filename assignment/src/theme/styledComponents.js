@@ -227,11 +227,14 @@ export const StyledDetailPage = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   width: 60%;
-  min-width: 330px;
+  min-width: 360px;
   border-radius: 10px;
   background-color: ${({theme})=>theme.colors.navbarColor};
   margin: auto;
   box-shadow: 5px 5px 15px 5px #000000;
+  @media (max-width: 840px) {
+    font-size: 12px;
+  }
 `
 export const DetailHeader = styled.h2`
   max-width: 100%;
@@ -251,6 +254,9 @@ export const InfoContainer = styled.div`
   padding: 20px;
   text-align: right;
   margin-right: 25px;
+  @media (max-width: 707px) {
+    padding-right: 0px;
+  }
   `
 
 export const LabelContainer = styled.div`
@@ -259,5 +265,8 @@ grid-column: 1/2;
 align-content: center;
 padding: 20px;
 margin-left: 25px;
+@media (max-width: 707px) {
+    padding-right: 0px;
+  }
 
 `
