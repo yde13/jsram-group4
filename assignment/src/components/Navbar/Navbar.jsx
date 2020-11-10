@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import LogOut from '../Login/LogOut'
 import { StyledNav, StyledNavContainer, StyledNavItems, StyledUserInfo } from '../../theme/styledComponents'
 import UserKit from '../../data/UserKit'
-import Image from './logo-g4.png';
+import Image from '../../images/logo-g4.png';
 
 export default function Navbar() {
   const userKit = new UserKit()
@@ -12,7 +12,7 @@ export default function Navbar() {
     <StyledNavContainer>
       <StyledNav>
         <StyledNavItems>
-          <img src={Image} />
+          <img src={Image} alt="logo" />
           <Link to='/'>Home</Link>
           {userKit.decodeToken() === false ? 
             <>
