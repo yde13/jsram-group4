@@ -7,10 +7,9 @@ export const Theme = {
         white: '#fffff',
         red: '#ff0000',
         ourPurple: '#5175c4'
-
     },
     fonts: {
         text: 'Poppins',
-        headers: 'Montserrat', 
+        headers: 'Montserrat',
     }
 }

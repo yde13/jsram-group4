@@ -12,12 +12,11 @@ import UserKit from './data/UserKit'
 import GuardedRoute from './components/Login/GuradedRoute';
 import GlobalStyle from './theme/globalStyles';
 
-
 function App() {
   const [userData, setUserData] = useState(null)
   const [customerData, setCustomerData] = useState(null)
   const userKit = new UserKit()
- 
+
   return (
     <>
       <GlobalStyle />
@@ -26,12 +25,13 @@ function App() {
           <Navbar />
 
           <Switch>
+
             <Route path='/' exact component={Home}></Route>
             <Route path='/login' exact component={LoginPage}></Route>
             <Route path='/signup' exact component={SignupPage}></Route>
             <GuardedRoute exact path='/customers/:id' component={CustomerDetailPage} auth={userKit.decodeToken()} />
             <GuardedRoute exact path='/customers' component={CustomersPage} auth={userKit.decodeToken()} />
-            
+
           </Switch>
         </UserContext.Provider>
       </CustomerContext.Provider>

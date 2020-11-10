@@ -5,16 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css'
-import {ThemeProvider} from 'styled-components';
-import {Theme} from './theme/Theme';
+import { ThemeProvider } from 'styled-components';
+import { Theme } from './theme/Theme';
 
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-    <ThemeProvider theme={Theme}>
-    <App />
-    </ThemeProvider>
+      <ThemeProvider theme={Theme}>
+        <App />
+      </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

@@ -16,14 +16,12 @@ export default function CustomerItem(props) {
     }
   `
 
-
   return (
     <StyledItem>
       <p>Name: {props.data[1].name}</p>
       <p>Email: {props.data[1].email}</p>
       <p>Phone: {props.data[1].phoneNumber}</p>
-       <Link to={`customers/${props.data[1].id}`}><StyledViewButton>More Info</StyledViewButton></Link>
-
+      <Link to={`customers/${props.data[1].id}`}><StyledViewButton>More Info</StyledViewButton></Link>
     </StyledItem>
   )
 }

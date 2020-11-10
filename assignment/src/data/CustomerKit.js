@@ -1,8 +1,6 @@
 const ROOT_URL = "https://frebi.willandskill.eu/"
 const Customer_URL = `${ROOT_URL}api/v1/customers`
 
-
-// eslint-disable-next-line import/no-anonymous-default-export
 export default class {
 
   fetchAll() {
@@ -28,15 +26,15 @@ export default class {
     return localStorage.getItem("JWT_APP")
   }
 
-  checkVATNRValidation(vatnr){
-    let text = vatnr.slice(0,2)
-    let nmr = vatnr.slice(2,12)
-    if(text === 'SE' && /^\d+$/.test(nmr) && vatnr.length === 12) {
+  checkVATNRValidation(vatnr) {
+    let text = vatnr.slice(0, 2)
+    let nmr = vatnr.slice(2, 12)
+    if (text === 'SE' && /^\d+$/.test(nmr) && vatnr.length === 12) {
       return true
     } else {
       return false
     }
-  } 
+  }
 
   ourGetFetch(url) {
     return fetch(url, {
@@ -59,11 +57,11 @@ export default class {
     })
   }
 
-  ourPostFetch(payload, url){
+  ourPostFetch(payload, url) {
     return fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(payload),
-        headers: this.ourPrivateHeaders()
+      method: 'POST',
+      body: JSON.stringify(payload),
+      headers: this.ourPrivateHeaders()
     })
   }
 

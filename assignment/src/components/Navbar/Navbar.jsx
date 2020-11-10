@@ -14,20 +14,22 @@ export default function Navbar() {
         <StyledNavItems>
           <img src={Image} />
           <Link to='/'>Home</Link>
-          {userKit.decodeToken() === false ? 
+          {userKit.decodeToken() === false ?
             <>
               <Link to='/login'>Login</Link>
               <Link to='/signup'>Signup</Link>
-            </>:        
+            </> :
             <>
               <Link to='/customers'>Customers</Link>
             </>
           }
         </StyledNavItems>
+
         <StyledUserInfo>
-          <UserInfo/>
+          <UserInfo />
           <LogOut />
         </StyledUserInfo>
+        
       </StyledNav>
     </StyledNavContainer>
   )

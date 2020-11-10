@@ -15,17 +15,16 @@ export default function ActivateAccount(props) {
 
   function handleOnClickActivateAccount() {
     userKit.activateAccount(UIDdata, tokenData)
-    .then(res => {
-      if( res.status === 204) {
-        setAccountCreated(true)
-        
-      } else {
-        setAccountCreated(false)
-      }
-    })
+      .then(res => {
+        if (res.status === 204) {
+          setAccountCreated(true)
+        } else {
+          setAccountCreated(false)
+        }
+      })
   }
 
-  function handleOnClickChangeUrl () {
+  function handleOnClickChangeUrl() {
     props.setURLdata(null)
     history.replace('/login')
   }
@@ -34,41 +33,41 @@ export default function ActivateAccount(props) {
     <StyledLoginBox>
       {!accountedCreated && (
         <>
-      <StyledInputLogin>
-        
-        {props.URLdata && (
-          <>
-          <label htmlFor="UID">UID</label>
-            <input
-              name="UID"
-              type='text'
-              value={UID}
-              onChange={e => setUIDdata(e.target.value)}
-            />
-            <label htmlFor="token">Token</label>
-            <input
-              name="token"
-              type='text'
-              value={TOKEN}
-              onChange={e => setTokenData(e.target.value)}
-            />
-            
-          </>
-        )}
-      </StyledInputLogin>
-      
-      <StyledPrimaryButton onClick={handleOnClickActivateAccount}>Activate account</StyledPrimaryButton>
-      <p>Account not created yey</p>
-      </>
+          <StyledInputLogin>
+
+            {props.URLdata && (
+              <>
+                <label htmlFor="UID">UID</label>
+                <input
+                  name="UID"
+                  type='text'
+                  value={UID}
+                  onChange={e => setUIDdata(e.target.value)}
+                />
+                <label htmlFor="token">Token</label>
+                <input
+                  name="token"
+                  type='text'
+                  value={TOKEN}
+                  onChange={e => setTokenData(e.target.value)}
+                />
+
+              </>
+            )}
+          </StyledInputLogin>
+
+          <StyledPrimaryButton onClick={handleOnClickActivateAccount}>Activate account</StyledPrimaryButton>
+          <p>Account not created.</p>
+        </>
       )}
 
       {accountedCreated && (
         <>
-        <StyledPrimaryButton onClick={handleOnClickChangeUrl}>Login here</StyledPrimaryButton>
-        <p>Account created! woh</p>
+          <StyledPrimaryButton onClick={handleOnClickChangeUrl}>Login here</StyledPrimaryButton>
+          <p>Account successfully created.</p>
         </>
       )}
-    
+
     </StyledLoginBox>
   )
 }

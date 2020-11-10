@@ -6,7 +6,7 @@ import { StyledPrimaryButton } from '../../theme/styledComponents';
 import { CustomerContext } from '../../contexts/CustomersContext';
 
 export default function LogOut() {
-  const {userData, setUserData} = useContext(UserContext)
+  const { userData, setUserData } = useContext(UserContext)
   const { setCustomerData } = useContext(CustomerContext)
   const userKit = new UserKit()
   const history = useHistory()
@@ -21,8 +21,8 @@ export default function LogOut() {
   return (
     <>
       {userData && (
-       <StyledPrimaryButton onClick={handleOnClickLogout}>Logout</StyledPrimaryButton>
+        <StyledPrimaryButton onClick={handleOnClickLogout}>Logout</StyledPrimaryButton>
       )}
-   </>
+    </>
   )
 }

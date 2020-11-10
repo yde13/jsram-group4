@@ -108,7 +108,7 @@ export const StyledForm = styled.div`
   padding: 20px;
   font-size: 1.1em;
   border-radius: 5px;
-  background: ${({theme})=>theme.colors.secondaryDarkColor};
+  background: ${({ theme }) => theme.colors.secondaryDarkColor};
 }
 .flexOuter li {
   display: flex;
@@ -123,9 +123,9 @@ export const StyledForm = styled.div`
 
 .flexOuter input {
   border-radius: 5px;
-  border: 2px solid ${({theme})=>theme.colors.mainDarkColor};
+  border: 2px solid ${({ theme }) => theme.colors.mainDarkColor};
   color: white;
-  background: ${({theme})=>theme.colors.secondaryDarkColor};
+  background: ${({ theme }) => theme.colors.secondaryDarkColor};
   ::placeholder {
       opacity: 0.6;
       color: white;
@@ -153,14 +153,14 @@ export const StyledForm = styled.div`
 export const StyledEditForm = styled(StyledForm)`
     
   .createCustomerForm {
-    background-color: ${({theme})=>theme.colors.firstDarkColor};
+    background-color: ${({ theme }) => theme.colors.firstDarkColor};
     margin: 0 auto;
   }
 `
 
 export const StyledPrimaryButton = styled.button`
   padding: 10px;
-  background-color: ${({theme})=>theme.colors.thirdDarkColor};
+  background-color: ${({ theme }) => theme.colors.thirdDarkColor};
   color: white;
   outline: none;
   font-size: 1rem;
@@ -169,7 +169,7 @@ export const StyledPrimaryButton = styled.button`
   display: inline-block;
   &:hover{
     cursor: pointer;
-    background-color: ${({theme})=>theme.colors.mainDarkColor};
+    background-color: ${({ theme }) => theme.colors.mainDarkColor};
   }
   :focus {
     outline: none;
@@ -224,7 +224,7 @@ export const StyledDetailPage = styled.div`
   width: 60%;
   min-width: 360px;
   border-radius: 10px;
-  background-color: ${({theme})=>theme.colors.navbarColor};
+  background-color: ${({ theme }) => theme.colors.navbarColor};
   margin: auto;
   box-shadow: 5px 5px 15px 5px #000000;
   @media (max-width: 840px) {
@@ -233,7 +233,7 @@ export const StyledDetailPage = styled.div`
 `
 export const DetailHeader = styled.h2`
   max-width: 100%;
-  background-color: ${({theme})=>theme.colors.secondaryDarkColor};
+  background-color: ${({ theme }) => theme.colors.secondaryDarkColor};
   grid-row: 1/2;
   grid-column: 1/3;
   border-top-left-radius: 10px;

@@ -2,10 +2,10 @@ import React from 'react'
 import { StyledInputLogin } from '../../theme/styledComponents'
 
 export default function LoginInput(props) {
-  return (
-    <StyledInputLogin>
+	return (
+		<StyledInputLogin>
 			<label htmlFor="Email">Email</label>
-      <input
+			<input
 				type='Email'
 				name='Email'
 				value={props.emailInput}
@@ -20,6 +20,6 @@ export default function LoginInput(props) {
 				onChange={e => props.setPasswordInput(e.target.value)}
 				placeholder='Password'
 			/>
-    </StyledInputLogin>
-  )
+		</StyledInputLogin>
+	)
 }

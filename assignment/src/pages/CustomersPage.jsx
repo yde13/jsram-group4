@@ -7,7 +7,6 @@ import { StyledList, StyledMainContentContainer } from '../theme/styledComponent
 
 
 export default function CustomersPage() {
-    const url = "https://frebi.willandskill.eu/api/v1/customers/"
     const [formInfo, setFormInfo] = useState('')
     const { customerData, setCustomerData } = useContext(CustomerContext)
     const customerKit = new CustomerKit();
@@ -24,33 +23,32 @@ export default function CustomersPage() {
     })
 
     function fetchAllCustomers() {
-        if(!customerData) {
+        if (!customerData) {
             customerKit.fetchAll()
-            .then(res => res.json())
-            .then(customers => {
-                setCustomerData(customers)
-            })
+                .then(res => res.json())
+                .then(customers => {
+                    setCustomerData(customers)
+                })
         }
-
     }
 
     function handleCreateCustomer() {
         const payload = formData;
         const customerkit = new CustomerKit();
         let check = customerKit.checkVATNRValidation(payload['vatNr'])
-        if(check) {
+        if (check) {
             customerkit.createCustomer(payload)
-            .then(res => res.json())
-            .then(data => {
-                if (data.hasOwnProperty('id')) {
-                    let customerDataCopy = { ...customerData }
-                    customerDataCopy.results.push(data);
-                    setCustomerData(customerDataCopy);
-                    setFormInfo('Customer added!')
-                } else {
-                    console.log('Something went wrong in the request');
-                }
-            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.hasOwnProperty('id')) {
+                        let customerDataCopy = { ...customerData }
+                        customerDataCopy.results.push(data);
+                        setCustomerData(customerDataCopy);
+                        setFormInfo('Customer added!')
+                    } else {
+                        console.log('Something went wrong in the request');
+                    }
+                })
         } else {
             setFormInfo('Incorrect vatNr format')
         }
@@ -93,6 +91,6 @@ export default function CustomersPage() {
             </StyledList>
 
         </StyledMainContentContainer>
-
+        
     )
 }

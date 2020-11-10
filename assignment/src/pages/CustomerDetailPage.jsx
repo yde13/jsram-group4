@@ -1,13 +1,13 @@
-import React, {useContext, useState, useEffect} from 'react'
-import {useHistory} from 'react-router-dom';
-import {CustomerContext} from '../contexts/CustomersContext';
+import React, { useContext, useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom';
+import { CustomerContext } from '../contexts/CustomersContext';
 import CustomerDetailItem from '../components/Customer/CustomerDetailItem';
 import CustomerEditDetails from '../components/Customer/CustomerEditDetails';
 import { StyledMainContentContainer, StyledPrimaryButton } from '../theme/styledComponents';
 
 export default function CustomerDetailPage(props) {
-    
-    const {customerData} = useContext(CustomerContext);
+
+    const { customerData } = useContext(CustomerContext);
     const [customerDetailData, setCustomerDetailData] = useState(null);
     const [editUser, setEditUser] = useState(false)
 
@@ -15,17 +15,17 @@ export default function CustomerDetailPage(props) {
     let history = useHistory();
 
     function checkCustomerData() {
-        if(customerData) {
+        if (customerData) {
             const customerIndex = customerData.results.filter((customer) => customer.id == id)
             setCustomerDetailData(customerIndex[0])
-            
+
         } else {
             history.push('/customers');
         }
     }
 
-    function handleOnClickEditCustomer () {
-        checkCustomerData(); 
+    function handleOnClickEditCustomer() {
+        checkCustomerData();
         setEditUser(!editUser)
     }
 
@@ -34,19 +34,20 @@ export default function CustomerDetailPage(props) {
     }, [])
 
     return (
-      
+
         <StyledMainContentContainer>
-          
+
             {customerDetailData && (
-                <>       
+                <>
                     <StyledPrimaryButton onClick={handleOnClickEditCustomer}>{editUser === false ? 'Edit' : 'Exit'}</StyledPrimaryButton>
-                    {editUser && <CustomerEditDetails customerID={id} data={customerDetailData}/>} 
-                    {!editUser && <CustomerDetailItem  customerID={id} data={customerDetailData}/>} 
-                  
+                    {editUser && <CustomerEditDetails customerID={id} data={customerDetailData} />}
+                    {!editUser && <CustomerDetailItem customerID={id} data={customerDetailData} />}
+
                 </>
-               
+
             )}
+            
         </StyledMainContentContainer>
-     
+
     )
 }

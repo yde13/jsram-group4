@@ -6,7 +6,6 @@ const LOGIN_URL = `${ROOT_URL}api-token-auth/`
 const USER_URL = `${AUTH_URL}users/`
 const ACTIVATE_USER_URL = `${USER_URL}activate`
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default class {
 
     login(email, password) {
@@ -29,11 +28,9 @@ export default class {
     }
 
     activateAccount(uid, token) {
-
         const payload = {
             uid, token
         };
-          
         return this.ourPostFetch(payload, ACTIVATE_USER_URL, 'public')
     }
 
@@ -61,23 +58,21 @@ export default class {
 
     decodeToken() {
         let decoded = jwt.decode(this.getToken());
-        
-        if(decoded !== null) {
+
+        if (decoded !== null) {
             if (Date.now() >= decoded.exp * 1000) {
                 return false;
-              } else {
+            } else {
                 return true
-              }
+            }
         } else {
             return false
         }
-       
     }
 
-    ourPostFetch(payload, url, type){
+    ourPostFetch(payload, url, type) {
         let headers = {}
         type === 'public' ? headers = this.ourPublicHeaders() : headers = this.ourPrivateHeaders()
-        console.log(headers);
         return fetch(url, {
             method: 'POST',
             body: JSON.stringify(payload),
@@ -88,14 +83,13 @@ export default class {
     ourGetFetch(url, type) {
         let headers = {}
         type === 'public' ? headers = this.ourPublicHeaders() : headers = this.ourPrivateHeaders()
-        console.log(headers);
         return fetch(url, { headers: headers })
     }
 
     ourPrivateHeaders() {
         return {
-             "Content-Type": "application/json",
-             "Authorization": `Bearer ${this.getToken()}`
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${this.getToken()}`
         }
     }
 
@@ -104,6 +98,4 @@ export default class {
             "Content-Type": "application/json"
         }
     }
-    
-
 }
